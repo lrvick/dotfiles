@@ -1,0 +1,176 @@
+ShowTAR()
+{
+    tar tvvf "$1" 2> /dev/null
+}
+
+ShowTGZ()
+{
+    tar tzvvf "$1" 2> /dev/null
+}
+
+ShowTBZ()
+{
+    bzip2 -dc "$1" | tar -tvv -f- 2> /dev/null
+}
+
+ShowGZIP()
+{
+    gzip -dc "$1" 2> /dev/null
+}
+
+ShowBZIP()
+{
+    bzip2 -dc "$1" 2> /dev/null
+}
+
+ShowZIP()
+{
+    unzip -l "$1" 2> /dev/null
+}
+
+ShowARJ()
+{
+    unarj l "$1" 2> /dev/null
+}
+
+ShowEXE()
+{
+    echo $(basename "$1"): DOS/Windows executable
+}
+
+ShowOBJ()
+{
+    echo $(basename "$1"): DOS/Windows object file
+}
+
+ShowLIB()
+{
+    echo $(basename "$1"): MS-DOS program library
+}
+
+ShowNG()
+{
+    echo $(basename "$1"): Norton Guide Database
+}
+
+ShowVCard()
+{
+    cat "$1" | vcard-filter
+}
+
+ShowTIF()
+{
+    tiffinfo "$1"
+}
+
+ShowMSWord()
+{
+    #lhalw --column 80 --to_stdout "$1" 2> /dev/null
+    #word2x-filter < $1
+    #catdoc "$1"
+    antiword "$1"
+}
+
+ShowObject()
+{
+    nm "$1"
+}
+
+ShowRPM()
+{
+    rpm -qip "$1"
+}
+
+ShowDEB()
+{
+   dpkg --info $1; dpkg --contents $1; 
+}
+
+ShowData()
+{
+    echo $(basename "$1"): unprintable data
+}
+
+DisplayFileType()
+{
+    echo "[-- $(basename $0) file type: \"$1\" --]"
+    echo
+}
+
+ShowFileType()
+{
+    FILE_TYPE=$(echo $(file -L "$1" 2> /dev/null) | cut -d' ' -f 2-)
+    DisplayFileType "$FILE_TYPE"
+}
+
+ShowMISC()
+{
+    FILE_TYPE=$(file -L -z "$1" 2> /dev/null)
+
+    if [ $? -gt 0 ]
+    then
+	FILE_TYPE=$(file -L "$1" 2> /dev/null)
+    fi
+
+    FILE_TYPE=$(echo "$FILE_TYPE" | cut -d' ' -f 2-)
+
+    DisplayFileType "$FILE_TYPE"
+
+    case "$FILE_TYPE" in
+	*tar*archive*gzip* ) ShowTGZ  "$1";;
+	*tar*archive*      ) ShowTAR  "$1";;
+	*gzip*             ) ShowGZIP "$1";;
+	*bzip2*            ) ShowBZIP "$1";;
+	*ARJ*archive*data* ) ShowARJ  "$1.";; # "." gets round bug in unarj.
+	*zip*archive*file* ) ShowZIP  "$1";;
+	*DOS*executable*   ) ShowEXE  "$1";;
+	*ascii*text*       ) cat      "$1";;
+	*c*program*text*   ) cat      "$1";;
+	*8086*reloc*Micro* ) ShowOBJ  "$1";;
+	*MS-DOS*prog*lib*  ) ShowLIB  "$1";;
+	data               ) ShowData "$1";;
+	*Microsoft*Word*   ) ShowMSWord "$1";;
+	*                  ) cat      "$1";;
+    esac
+}
+
+if [ "$1" = "" ]
+then
+    echo "syntax: $(basename '$0') file"
+else
+    case "$1" in
+	*.tar )     ShowFileType "$1"; ShowTAR    "$1";;
+	*.tgz )     ShowFileType "$1"; ShowTGZ    "$1";;
+	*.tar.gz )  ShowFileType "$1"; ShowTGZ    "$1";;
+	*.tar.Z )   ShowFileType "$1"; ShowTGZ    "$1";;
+	*.tar.z )   ShowFileType "$1"; ShowTGZ    "$1";;
+        *.tbz2 )    ShowFileType "$1"; ShowTBZ    "$1";;
+        *.tar.bz2 ) ShowFileType "$1"; ShowTBZ    "$1";;
+	*.Z )       ShowFileType "$1"; ShowGZIP   "$1";;
+	*.z )       ShowFileType "$1"; ShowGZIP   "$1";;
+	*.gz )      ShowFileType "$1"; ShowGZIP   "$1";;
+        *.bz2 )     ShowFileType "$1"; ShowBZIP   "$1";;
+	*.zip )     ShowFileType "$1"; ShowZIP    "$1";;
+	*.ZIP )     ShowFileType "$1"; ShowZIP    "$1";;
+	*.arj )     ShowFileType "$1"; ShowARJ    "$1";;
+	*.ARJ )     ShowFileType "$1"; ShowARJ    "$1";;
+	*.log )     ShowFileType "$1"; cat        "$1";;
+	*.LOG )     ShowFileType "$1"; cat        "$1";;
+	*.obj )     ShowFileType "$1"; ShowOBJ    "$1";;
+	*.OBJ )     ShowFileType "$1"; ShowOBJ    "$1";;
+	*.lib )     ShowFileType "$1"; ShowLIB    "$1";;
+	*.LIB )     ShowFileType "$1"; ShowLIB    "$1";;
+	*.NG )      ShowFileType "$1"; ShowNG     "$1";;
+	*.ng )      ShowFileType "$1"; ShowNG     "$1";;
+	*.vcf )     ShowFileType "$1"; ShowVCard  "$1";;
+	*.tif )     ShowFileType "$1"; ShowTIF    "$1";;
+	*.TIF )     ShowFileType "$1"; ShowTIF    "$1";;
+        *.doc )     ShowFileType "$1"; ShowMSWord "$1";;
+        *.DOC )     ShowFileType "$1"; ShowMSWord "$1";;
+        *.o )       ShowFileType "$1"; ShowObject "$1";;
+        *.rpm )     ShowFileType "$1"; ShowRPM    "$1";;
+	*.deb )	    ShowFileType "$1"; ShowDEB    "$1";;
+	* )         ShowMISC "$1";;
+    esac
+fi
+

@@ -1,0 +1,63 @@
+color  sidebar_new  brightwhite   default
+color  indicator    brightwhite   blue
+color  normal       brightwhite   default
+color  quoted       green         default
+color  status       brightyellow  blue
+color  tilde        brightcyan    default
+color  tree         green         default
+color  tilde        red           default   
+color  attachment   magenta       default   
+color  quoted       green         black
+color  quoted1      cyan          black
+color  quoted2      green         black
+color  quoted3      cyan          black
+color  normal       white         black
+color  message      white         black
+color  hdrdefault   cyan          black
+color  attachment   yellow        black
+color  index        cyan          black      "~Q"
+color  index        brightwhite   default    "~N"
+color  index        brightyellow  black      "~N"
+color  index        brightyellow  black      "~O"
+color  index        blue          black      "~D"
+color  index        brightred     black      "~F"
+color  header       brightblue    default    "^date:"
+color  header       green         default    "^cc"
+color  header       brightblue    default    "^organi[sz]ation"
+color  header       brightblue    default    "^x-newsreader"
+color  header       brightblue    default    "^x-mailing-list"
+color  header       brightblue    default    "^posted-to"
+color  header       brightblue    default    "^message-id"
+color  header       cyan          default    "^user-agent"
+color  header       cyan          default    "^x-mailer"
+color  header       green         default    "^to:"
+color  header       brightyellow  default    "^subject"
+color  header       red           default    "^from:"
+color  header       brightgreen   default    (receipt-to|Receipt-To|X-Confirm-Reading-To|disposition-notification-to|X-Priority|X-Priority|High)
+color  header       red           default    .
+color  body         brightgreen   default    [_a-z\.\$A-Z0-9-]+@[a-zA-Z0-9\./\-]+
+color  body         brightgreen   default    (http|ftp)://[_a-zA-Z0-9\./~\-]+
+color  body         cyan          default    "ftp://[^ ]*"
+color  body         black         red        "BAD signature .*$"
+color  body         brightgreen   black      "Good signature .*$"
+color  body         brightred     black      "Can't check signature: public key not found"
+color  body         brightred     black      "WARNING: .*!"
+color  body         brightred     black      "some signal caught ... exiting"
+color  body         yellow        default    "(finger|ftp|http|https|news|telnet)://[^ >]*"
+color  body         yellow        default    "<URL:[^ ]*>"
+color  body         yellow        default    "www\\.[-.a-z0-9]+\\.[a-z][a-z][a-z]?([-_./~a-z0-9]+)?"
+color  body         yellow        default    "mailto: *[^ ]+\(\\i?subject=[^ ]+\)?"
+color  body         yellow        default    "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color  body         brightwhite   default    "[^[:alnum:]][*_/][-_&!.,[:alnum:]]+[*_/][^[:alnum:]]"
+color  body         brightwhite   default    "^[*_/][-_&!.,[:alnum:]]+[*_/][^[:alnum:]]"
+color  body         brightwhite   default    "^[*_/][-_&!.,[:alnum:]]+[*_/]$"
+color  body         magenta       default    "-----BEGIN PGP SIGNED MESSAGE-----"
+color  body         magenta       default    "-----BEGIN PGP SIGNATURE-----"
+color  body         magenta       default    "-----END PGP SIGNED MESSAGE-----"
+color  body         magenta       default    "-----END PGP SIGNATURE-----"
+color  body         brightyellow  default    "(^| )[;:8]-?[][)(PDp/|\]+($| )"
+color  body         brightyellow  default    "<[Bb]?[Gg]>"
+color  signature    red           default   
+color  attachment   yellow        default
+
+# vim : ft=muttrc 

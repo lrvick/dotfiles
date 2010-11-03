@@ -1,0 +1,8 @@
+#
+# WeeChat plugins configuration file, created by WeeChat v0.2.6.2 on Sat Mar 13 22:44:39 2010
+# WARNING! Be careful when editing this file, WeeChat writes this file when options are updated.
+#
+aspell.check-sync = "0"
+aspell.color = "red"
+aspell.word-size = "2"
+charset.global.decode = "ANSI_X3.4-1968"

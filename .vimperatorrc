@@ -1,0 +1,10 @@
+set showtabline=0
+colorscheme midnight
+set titlestring=""
+
+cabbrev /. http://slashdot.org
+cabbrev fb http://facebook.com
+cabbrev lx http://lxer.com
+cabbrev wt http://woot.com
+cabbrev sw http://shirts.woot.com
+

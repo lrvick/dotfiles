@@ -1,0 +1,120 @@
+# 256 color theme for mutt
+#
+# Interface Colors: various color selectors that control many various parts of the mutt interface.
+color normal      color241  default                                                                           # default
+color sidebar_new color247  default                                                                           # sidebar box with new mail
+color hdrdefault  color240  color233                                                                          # HDR default
+color indicator	  color250  color233                                                                          # horizontal cursor
+color tree        color244  default                                                                           # tree arrows
+color status      black     color235                                                                          # status indicator
+mono  status      bold                                                                                        # ^bold
+color error       color250  default                                                                           # mutt errors
+color message     color235  default                                                                           # default message body
+color signature   color240  default                                                                           # default signature
+color attachment  color255  default                                                                           # attachment
+color search      color237  default                                                                           # default search
+color tilde       color237  default                                                                           # tilde
+color markers     color248  default                                                                           # markers
+color bold        color255  default                                                                           # bold text color
+mono  underline   reverse                                                                                     # ^underline
+color underline   color255  default                                                                           # underline color
+# Index colors: used when at the root of a mailbox to highlight messages titles based on their attributes        
+color index       color234  default  '~N'                                                                     # new
+color index       color236  default  '~O'                                                                     # old
+color index       color232  default  '~F'                                                                     # flagged
+color index       color238  default  '~T'                                                                     # tagged
+color index       color240  default  '~D'                                                                     # deleted
+color index       color242  default  '~b "<(img|a |html|body)"'                                               # HTML messages
+color index       color244  default  '~h "^content-type: *multipart/(signed|encrypted)"'                      # PGP signed/encryptyed
+mono  index       bold               '~h "^content-type: *(multipart/(mixed|signed|encrypted)|application/)"' # ^bold
+# Header colors: regular expressions to highlight various parts of a message's header                  
+color header      brightred default  '.'                                                                      # unmatched (should not happen)
+color header      color235  default  '^delivered-to:'                                                         # delivered to
+color header      color235  default  '^received: by'                                                          # received by
+color header      color235  default  '^received: from'                                                        # received from
+color header      color235  default  '^return-path:'                                                          # return path
+color header      color235  default  '^received-spf'                                                          # received spf
+color header      color235  default  '^authentication-results:'                                               # authentication results
+color header      color245  default  '^x-'                                                                    # unmatched propriatary headers
+color header      color235  default  '^x-forwarded-to:'                                                       # known misc x headers -\/
+color header      color235  default  '^x-server-uuid:'                                                        # server id
+color header      color235  default  '^x-message-routing'                                                     # routing
+color header      color235  default  '^x-forwarded-for:'                                                      # forwarded for
+color header      color235  default  '^x-x-forwarded-for:'                                                    # forwarded forwarded for
+color header      color235  default  '^x-mailing-list'                                                        # mailing list name
+color header      color235  default  '^x-gmail-fetch-info:'                                                   # gmail fetch info
+color header      color235  default  '^x-originating-ip:'                                                     # originating ip
+color header      color235  default  '^x-source'                                                              # source
+color header      color235  default  '^x-antiabuse:'                                                          # antiabuse headers
+color header      color235  default  '^x-maxcode-template:'                                                   # maxcode template
+color header      color235  default  '^x-email-type-id:'                                                      # email type id
+color header      color235  default  '^x-authority'                                                           # authority
+color header      color235  default  '^x-ms-has-attach:'                                                      # ms attachment
+color header      color235  default  '^x-ms-tnef-correlator:'                                                 # ms correlator
+color header      color235  default  '^(x-elnk|x-scan|x-cm-|x-cnfs|x_cmae|dkim-si|domainkey|x-virus|x-spam)'  # spamfilters
+color header      color241  default  '^(user-agent|x-php|x-mimeole|x-mailer|x-newsreader|x-xpt-xsl-name):'    # senders mail client
+color header      color250  default  '^(date|x-originalarrivaltime):'                                         # date sent  
+color header      color245  default  '^(importance|x-priority|x-msmail-priority)'                             # importance
+color header      color235  default  '^message-id'                                                            # isp's message id
+color header      color235  default  '^references:'                                                           # references 
+color header      color243  default  '^content-language'                                                      # language
+color header      color243  default  '^content-disposition'                                                   # disposition
+color header      color247  default  '^content-class'                                                         # class
+color header      color233  default  '^content-type'                                                          # type
+color header      color233  default  '^content-transfer-encoding'                                             # encoding
+color header      color245  default  '^mime-version'                                                          # mime version
+color header      color243  default  '^thread-index'                                                          # thread index
+color header      color243  default  '^thread-topic'                                                          # thread topic
+color header      color245  default  '^from:'                                                                 # from
+color header      color246  default  '^to'                                                                    # to
+color header      color249  default  '^subject:'                                                              # subject
+mono  header      bold               '^subject:'                                                              # ^bold
+color header      color251  default  '^cc'                                                                    # carbon copy
+color header      color252  default  '^bcc'                                                                   # blind carbon copy
+color header      color253  default  '^(in-reply-to|reply-to):'                                               # replying to
+color header      color254  default  '^posted-to'                                                             # thread posted to
+color header      color255  default  '^(x-confirm-reading-toreturn-receipt-to|receipt-to):'                   # receipt request
+color header      color232  default  '^organi[sz]ation'                                                       # company/org sent from
+color header      color235  default  '^list-[^:]*:'                                                           # list information
+color header      color236  default  '^disposition'                                                           # disposition
+color header      color237  default  '^(mail-)?followup'                                                      # followups
+color header      color238  default  '^(resent)'                                                              # resent msgs
+# Body Text: Highlights the various parts of the body text in a message
+color body        color255  default  '(finger|ftp|http|https|news|telnet|git)://[^ >]*'                       # URLs
+color body        color255  default  '[-a-z_0-9.+]+@[-a-z_0-9.]+'                                             # emails
+color body        color255  default  'subject:.*'                                                             # subjects
+mono  body        reverse            'subject:.*'                                                             # ^bold
+color body        color250  default  '-----BEGIN PGP SIGNED MESSAGE-----'                                     # begin pgp msg
+color body        color250  default  '-----BEGIN PGP SIGNATURE-----'                                          # begin pgp sig
+color body        color250  default  '-----END PGP SIGNED MESSAGE-----'                                       # end pgp msg
+color body        color255  default  '-----END PGP SIGNATURE-----'                                            # end pgp sig
+color body        color255  default  'Good signature .*$'                                                     # good pgp sig
+color body        brightred default  'BAD signature .*$'                                                      # bad pgp sig
+color body        brightred default  "Can't check signature: public key not found"                            # pgp error 
+color body        brightred default  'WARNING: .*!'                                                           # warnings
+color body        brightred default  'some signal caught ... exiting'                                         # mutt error
+color body        color250  default  '(\(:|:\)|;\)|:-\)|:>|8-\))'                                             # smilies 1
+color body        color255  default  '(:D|:-D|=-O|:-[pP]|:-\*|>:o|:\/|:-\/|\o/)'                              # smilies 2
+# Quoted Text: Colors for the various levels of quoted text in message replys 
+color quoted      color254  default                                                                           # first reply
+color quoted1     color253  default                                                                           # second reply
+color quoted2     color252  default                                                                           # third reply
+color quoted3     color251  default                                                                           # fourth reply
+color quoted4     color250  default                                                                           # fifth reply
+color quoted5     color249  default                                                                           # sixth reply
+color quoted6     color248  default                                                                           # seventh reply
+color quoted7     color247  default                                                                           # eighth reply
+color quoted8     color246  default                                                                           # ninth reply
+color quoted9     color245  default                                                                           # tenth reply
+color quoted10    color244  default                                                                           # eleventh reply
+color quoted11    color243  default                                                                           # twelth reply
+color quoted12    color242  default                                                                           # thirthteenth reply
+color quoted13    color241  default                                                                           # fourteenth reply
+color quoted14    color240  default                                                                           # fifteenth reply
+color quoted15    color239  default                                                                           # sixteenth reply
+color quoted16    color238  default                                                                           # seventeenth reply
+color quoted17    color237  default                                                                           # eighteenth reply
+color quoted18    color236  default                                                                           # ninteenth reply
+color quoted19    color235  default                                                                           # twentieth reply
+color quoted20    color234  default                                                                           # twentifirst reply
+# vim : ft=muttrc 
