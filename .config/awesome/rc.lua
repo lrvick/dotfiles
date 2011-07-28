@@ -106,6 +106,7 @@ ipwidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
 ipwidget_icon.image = image(beautiful.ipwidget_icon)
 ipwidget_icon.resize = false
 ipwidget_icon.valign = 'center'
+awful.widget.layout.margins[ipwidget_icon] = { top = 5 }
 ipwidget = widget({ type = 'textbox'     , align = 'right' })
 function update_ipwidget() 
   local f = io.popen("/sbin/ifconfig")
@@ -156,6 +157,7 @@ cpuloadwidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
 cpuloadwidget_icon.image = image(beautiful.cpuloadwidget_icon)
 cpuloadwidget_icon.resize = false
 cpuloadwidget_icon.valign = 'center'
+awful.widget.layout.margins[cpuloadwidget_icon] = { top = 5 }
 cpuloadwidget            = widget({ type = 'textbox'     , align = 'right' })
 cpuspeedwidget            = widget({ type = 'textbox'     , align = 'right' })
 function update_cpuloadwidget()
@@ -215,6 +217,7 @@ memoryusedwidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
 memoryusedwidget_icon.image = image(beautiful.memoryusedwidget_icon)
 memoryusedwidget_icon.resize = false
 memoryusedwidget_icon.valign = 'center'
+awful.widget.layout.margins[memoryusedwidget_icon] = { top = 5 }
 memoryusedwidget = widget({ type = 'textbox'     , align = 'right' })
 function update_memoryusedwidget()
 	local mem_free, mem_total, mem_c, mem_b
@@ -250,6 +253,7 @@ if battery ~= ""  then
   batterywidget_icon.image = image(beautiful.batterywidget_icon)
   batterywidget_icon.resize = false
   batterywidget_icon.valign = 'center'
+  awful.widget.layout.margins[batterywidget_icon] = { top = 5 }
   batterywidget = widget({ type = 'textbox'     , align = 'right' })
   function update_batterywidget() --{{{ updates batterywidget with current battery charge level
     local a = io.popen("cat /sys/class/power_supply/BAT"..battery.."/energy_full")
@@ -278,6 +282,7 @@ datewidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
 datewidget_icon.image = image(beautiful.datewidget_icon)
 datewidget_icon.resize = false
 datewidget_icon.valign = 'center'
+awful.widget.layout.margins[datewidget_icon] = { top = 5 }
 datewidget                     = widget({ type = 'textbox'     , align = 'right' })
 function update_datewidget()
   datewidget.text  = spacer .. os.date('%a %d %b %H:%M') .. "  "
