@@ -102,6 +102,48 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+
+netupwidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
+netupwidget_icon.image = image(beautiful.networkupwidget_icon)
+netupwidget_icon.resize = false
+netupwidget_icon.valign = 'center'
+awful.widget.layout.margins[netupwidget_icon] = { top = 5 }
+netupwidget = widget({ type = 'textbox'     , align = 'right' })
+netdownwidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
+netdownwidget_icon.image = image(beautiful.networkdownwidget_icon)
+netdownwidget_icon.resize = false
+netdownwidget_icon.valign = 'center'
+awful.widget.layout.margins[netdownwidget_icon] = { top = 5 }
+netdownwidget = widget({ type = 'textbox'     , align = 'right' })
+function update_netspeedwidgets()
+    local curr_bytes_down = 0
+    local curr_bytes_up = 0
+    local net_up
+    local net_down
+    for line in io.lines('/proc/net/dev') do
+        local device,bytes_down,bytes_up = line:match('^[%s]?[%s]?[%s]?[%s]?([%w]+):[%s]?([%d]+)[%s]+[%d]+[%s]+[%d]+[%s]+[%d]+[%s]+[%d]+[%s]+[%d]+[%s]+[%d]+[%s]+[%d]+[%s]+([%d]+)[%s]')
+        if device then
+            curr_bytes_down = curr_bytes_down + bytes_down
+            curr_bytes_up = curr_bytes_up + bytes_up
+        end
+    end
+    if (total_bytes_down == nil) then
+        total_bytes_down = curr_bytes_down
+    end
+    if (total_bytes_up == nil) then
+        total_bytes_up = curr_bytes_up
+    end
+    net_down = math.floor((((curr_bytes_down - total_bytes_down) / 1048576) * 10^2) + 0.5) / (10^2)
+    net_up = math.floor((((curr_bytes_up - total_bytes_up) / 1048576) * 10^2) + 0.5) / (10^2)
+    total_bytes_down = curr_bytes_down
+    total_bytes_up = curr_bytes_up
+    netdownwidget.text = spacer .. net_down .. spacer
+    netupwidget.text = spacer .. net_up .. spacer
+end
+update_netspeedwidgets()
+awful.hooks.timer.register(1, function() update_netspeedwidgets() end)
+
+
 ipwidget_icon       = widget({	type = 'imagebox'    , align = 'right' })
 ipwidget_icon.image = image(beautiful.ipwidget_icon)
 ipwidget_icon.resize = false
@@ -109,7 +151,7 @@ ipwidget_icon.valign = 'center'
 awful.widget.layout.margins[ipwidget_icon] = { top = 5 }
 ipwidget = widget({ type = 'textbox'     , align = 'right' })
 function update_ipwidget() 
-  local f = io.popen("/sbin/ifconfig")
+  local f = io.popen("/sbin/ifconfig eth1")
   if f then
     local ifOut = f:read('*a')
     f:close()
@@ -191,7 +233,7 @@ function update_cpuloadwidget()
             usage_percent = math.floor(diff_active/diff_total*100)
             cpu0_total    = total_new
             cpu0_active   = active_new
-	          cpuloadwidget.text = spacer .. usage_percent .. "% /"
+	        cpuloadwidget.text = spacer .. usage_percent .. "% /"
     end
 end
 f:close()
@@ -201,12 +243,13 @@ function update_cpuspeedwidget() --{{{ returns current cpu frequency
   local line = f:read()
   while line do
     if line:match("cpu MHz") then
-      mhz = string.match(line, "%d+").."Mhz"
+
+      ghz = math.floor(((string.match(line, "%d+") / 1000) * 10^1) + 0.5) / (10^1)
     end
     line = f:read()
   end
   io.close(f)
-	cpuspeedwidget.text = spacer .. mhz .. spacer
+	cpuspeedwidget.text = spacer .. ghz .. "Ghz" .. spacer
 end --}}}
 update_cpuspeedwidget()
 update_cpuloadwidget()
@@ -242,7 +285,8 @@ function update_memoryusedwidget()
     line = f:read()
   end
   io.close(f)
-  memoryusedwidget.text = spacer .. math.floor(100 * (mem_total - mem_free - mem_b - mem_c ) / mem_total).. "% /  " .. math.floor(mem_total / 1000) .. "M" .. spacer;
+  --memoryusedwidget.text = spacer .. math.floor(100 * (mem_total - mem_free - mem_b - mem_c ) / mem_total).. "% /  " .. math.floor(mem_total / 1000) .. "M" .. spacer;
+  memoryusedwidget.text = spacer .. math.floor(100 * (mem_total - mem_free - mem_b - mem_c ) / mem_total).. "%" .. spacer;
 end
 update_memoryusedwidget()
 awful.hooks.timer.register(1, function() update_memoryusedwidget() end)
@@ -324,6 +368,8 @@ for s = 1, screen.count() do
         mypromptbox[s],
         cpuspeedwidget, cpuloadwidget, cpuloadwidget_icon, 
         memoryusedwidget, memoryusedwidget_icon,
+        netupwidget, netupwidget_icon,
+        netdownwidget, netdownwidget_icon,
         ipwidget, ipwidget_icon,
 				ratewidget,
 				essidwidget,
