@@ -1,5 +1,5 @@
 "Load Pathogen and all bundles
-source ~/.vim/vim-pathogen/autoload/pathogen.vim
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 "Basic goodness
