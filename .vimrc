@@ -37,3 +37,6 @@ hi IndentGuidesEven ctermbg=233
 
 "Gundo
 nnoremap <F5> :GundoToggle<CR>
+
+"Nerdtree
+map <F2> :NERDTreeToggle<CR>
