@@ -14,7 +14,9 @@ if [[ -n "$DISPLAY" ]] && [[ $(tty) != /dev/tty1 ]]; then
   alias lslogin="sh ~/scripts/lslogin.sh"
   alias twitter="sh ~/scripts/bashtc.sh"
   alias pywifi="python ~/scripts/pywifi.py"
-	alias workbw="ssh root@31.3.3.1 sh /jffs/updatebwlog.sh"
+  alias workbw="ssh root@31.3.3.1 sh /jffs/updatebwlog.sh"
+  alias revenge="/opt/revengeofthetitans/revenge.sh"
+  alias braid="/opt/braid/braid"
   export XDG_DATA_HOME=~/.local/share/
   xbindkeys
 fi

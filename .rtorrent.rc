@@ -14,4 +14,4 @@ session          = ~/Downloads/incoming/
 schedule         = watch_directory,5,5,load_start="~/Downloads/*.torrent"
 schedule         = low_diskspace,5,60,close_low_diskspace=100M
 schedule         = ratio,60,60,"stop_on_ratio=200,200M,2000"
-on_finished      = move_complete,"execute=mv,-u,$d.get_base_path=,~/Downloads/ ;d.set_directory=~/Downloads/"
+#on_finished      = move_complete,"execute=mv,-u,$d.get_base_path=,~/Downloads/ ;d.set_directory=~/Downloads/"
