@@ -6,9 +6,15 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 set number
-set mouse=a
 set cursorline
 set autoindent smartindent
+
+"Enable mouse for selecting/changing windows etc.
+set mouse=a
+
+"Highlight end of line whitespace.
+set list
+set listchars=trail:.
 
 "Solarized color scheme
 set background=dark
