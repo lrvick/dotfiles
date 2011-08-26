@@ -36,7 +36,10 @@ hi IndentGuidesOdd  ctermbg=236
 hi IndentGuidesEven ctermbg=233
 
 "Gundo
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <silent> <F5> :GundoToggle<CR>
 
 "Nerdtree
-map <F2> :NERDTreeToggle<CR>
+map <silent> <F2> :NERDTreeToggle<CR>
+
+"Tagbar
+nnoremap <silent> <F9> :TagbarToggle<CR>
