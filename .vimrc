@@ -7,6 +7,7 @@ syntax on
 filetype plugin indent on
 set number
 set mouse=a
+set cursorline
 
 "Solarized color scheme
 set background=dark
