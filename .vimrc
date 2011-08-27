@@ -57,7 +57,7 @@ hi User3 ctermbg=blue  ctermfg=green
 set laststatus=2
 set statusline=         " clear statusline for vim reload
 set statusline+=%1*     " set color to User1
-set statusline+=%t      " tail of the filename
+set statusline+=%f      " filename/path
 set statusline+=\ %y    " filetype
 set statusline+=\[%{FileSize()}]
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
