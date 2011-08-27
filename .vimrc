@@ -49,3 +49,36 @@ map <silent> <F2> :NERDTreeToggle<CR>
 
 "Tagbar
 nnoremap <silent> <F9> :TagbarToggle<CR>
+
+"Status line of awesome
+hi User1 ctermbg=237 ctermfg=248
+hi User2 ctermbg=red   ctermfg=blue
+hi User3 ctermbg=blue  ctermfg=green
+set laststatus=2
+set statusline=         " clear statusline for vim reload
+set statusline+=%1*     " set color to User1
+set statusline+=%t      " tail of the filename
+set statusline+=\ %y    " filetype
+set statusline+=\[%{FileSize()}]
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] " file format
+set statusline+=%h      " help file flag
+set statusline+=%m      " modified flag
+set statusline+=%r      " read only flag
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''} " Git Branch (if fugitive loaded)
+set statusline+=[Modified:%{strftime(\"\%c\",getftime(expand(\"\%\%\")))}]  " Last Modified
+set statusline+=%=      " left/right seperator
+set statusline+=[%c,    " cursor column
+set statusline+=%l/%L   " cursor line/total lines
+set statusline+=\ %P]   " percent through file"
+function! FileSize()
+  let bytes = getfsize(expand("%:p"))
+  if bytes <= 0
+    return ""
+  endif
+  if bytes < 1024
+    return bytes
+  else
+    return (bytes / 1024) . "K"
+  endif
+endfunction
