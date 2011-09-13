@@ -1,7 +1,7 @@
 ! General urxvt preferences
 urxvt*loginShell:true
 urxvt*transparent:true
-urxvt*shading:40
+urxvt*shading:60
 urxvt*background:Black
 urxvt*foreground:White
 urxvt*scrollBar:false

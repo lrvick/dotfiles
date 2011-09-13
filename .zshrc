@@ -33,16 +33,20 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 
-eval $(keychain --eval id_rsa 36C8AAA9)
-
-alias grep='grep --color=auto'
-alias df='df -h'
-alias du='du -c -h'
-alias mkdir='mkdir -p -v'
-alias ls='ls -hF --color=always'
-
 EDITOR="vim"
 
 export PS1="${VIRTUAL_ENV#*Envs/}%{$fg[green]%}%n@%m%{$fg[blue]%}% > "
 export WORKON_HOME=~/Envs
 source /usr/bin/virtualenvwrapper.sh
+
+# Magical aliases
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+alias ls='ls -hF --color=always'
+alias logs="sh ~/Scripts/logs.sh"
+alias uwlogs="sh ~/Scripts/uwlogs.sh"
+alias tklogs="sh ~/Scripts/tawlklogs.sh"
+
+#eval $(keychain --eval id_rsa 36C8AAA9)
