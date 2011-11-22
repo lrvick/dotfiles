@@ -8,6 +8,12 @@ filetype plugin indent on
 set number
 set cursorline
 set autoindent smartindent
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
+set colorcolumn=79
 
 "Enable mouse for selecting/changing windows etc.
 set mouse=a
@@ -16,6 +22,12 @@ set mouse=a
 set list
 set listchars=trail:.
 
+"Syntastic syntax error checking options
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_jsl_conf="~/.jsl.conf"
+
 "Solarized color scheme
 set background=dark
 let g:solarized_termtrans=1
@@ -23,9 +35,6 @@ let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
-
-"Language Specific Tweaks
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 colorcolumn=79
 
 "Persistant undo
 set undodir=~/.vim/undodir
@@ -57,8 +66,11 @@ hi User3 ctermbg=blue  ctermfg=green
 set laststatus=2
 set statusline=         " clear statusline for vim reload
 set statusline+=%1*     " set color to User1
-set statusline+=%f      " filename/path
-set statusline+=\ %y    " filetype
+set statusline+=%f     " filename/path
+set statusline+=\ %#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%1*     " set color to User1
+set statusline+=%y    " filetype
 set statusline+=\[%{FileSize()}]
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] " file format

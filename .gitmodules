@@ -13,9 +13,6 @@ path = .vim/bundle/closetag
 [submodule ".vim/bundle/solarized"]
 	path = .vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/pyflakes-vim"]
-	path = .vim/bundle/pyflakes-vim
-	url = https://github.com/kevinw/pyflakes-vim.git
 [submodule ".vim/bundle/vim-indent-guides"]
 	path = .vim/bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
@@ -34,3 +31,6 @@ path = .vim/bundle/closetag
 [submodule ".vim/bundle/Conque-Shell"]
 	path = .vim/bundle/Conque-Shell
 	url = https://lrvick@github.com/lrvick/Conque-Shell.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
