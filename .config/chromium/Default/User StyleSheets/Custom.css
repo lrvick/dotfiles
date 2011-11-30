@@ -1,113 +1,91 @@
 /**********************************************/
-/*
-/* IR_Black Skin by Ben Truyman - 2011
-/*
-/* Based on Todd Werth's IR_Black:
-/* http://blog.toddwerth.com/entries/2
-/*
-/* Inspired by Darcy Clarke's blog post:
-/* http://darcyclarke.me/design/skin-your-chrome-inspector/
-/*
-/**********************************************/
-
-/**********************************************/
 /* Console
 /**********************************************/
 
   /**********************************************/
   /* Messages
   /**********************************************/
-  
+
   #console-messages {
     font-size: 10px;
     font-family: 'DroidSansMono', Menlo, monospace !important;
-    background: #242424;
+    background: #000000;
   }
-  
+
   #console-messages a {
     color: #666 !important;
   }
-  
+
   #console-messages a:hover {
     color: #999 !important;
   }
-  
+
   #console-messages .console-message {
     color: #f1f1f1 !important;
   }
-  
+
   #console-messages .console-message, .console-user-command {
     border-bottom: 1px solid #444 !important;
   }
-  
+
   #console-messages .console-user-command > .console-message-text {
     color: #ffd2a7 !important;
   }
-  
+
   #console-messages .console-formatted-number {
     color: #ff73fd !important;
   }
-  
+
   #console-messages .console-formatted-string {
     color: #a8ff60 !important;
   }
-  
+
   #console-messages .console-formatted-object {
     color: #7c7c7c !important;
   }
-  
+
   #console-messages .console-formatted-function {
     color: #fff !important;
   }
-  
+
   #console-messages .console-formatted-regexp {
     color: #e9c062 !important;
   }
-  
+
   #console-messages .console-group-messages .section .header .title {
     color: #f1f1f1 !important;
   }
-  
+
   #console-messages .section .properties .name, .event-properties .name {
     color: #96cbfe !important;
   }
-  
+
   #console-messages .console-group-messages .section .header::before,
   #console-messages .properties-tree li.parent::before {
     content: url(chrome-devtools://devtools/Images/treeRightTriangleWhite.png) !important;
   }
-  
+
   #console-messages .console-group-messages .section.expanded .header::before,
   #console-messages .properties-tree li.parent.expanded::before {
     content: url(chrome-devtools://devtools/Images/treeDownTriangleWhite.png) !important;
   }
-  
-  @-webkit-keyframes webkit-error-level { 
-    0%   { color: #f77; !important }
-    50%  { color: #f00; !important }
-    100% { color: #f77; !important }
-  }
-  
+
   #console-messages .console-error-level .console-message-text {
-    color: #f66 !important;
-    -webkit-animation-name: webkit-error-level;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-timing-function: ease-in-out;
+    color: #A00 !important;
   }
-  
+
   #console-messages .console-user-command::before {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTMzNzdGNUZDMTA1MTFFMDgwRUZGQ0JCMjgzMzU0MTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTMzNzdGNjBDMTA1MTFFMDgwRUZGQ0JCMjgzMzU0MTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MzM3N0Y1REMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MzM3N0Y1RUMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pia6udAAAAB5SURBVHjaYvz//z8DMYAFxli9ejWI6oByK5AVhYaGIhRCgQsQGwOxIFTxe5gEE5pCVyA+C8RpQLwbqgmrwvdQxauhis6AbMamEASUkEwCabyHTWE51BQlqBNMoDSKQhckX3dCFd3DCB4g2AP16VkoGwUwEhvgAAEGAAzQHBRSxqPRAAAAAElFTkSuQmCC) !important;
   }
-  
+
   /**********************************************/
   /* Prompt
   /**********************************************/
-  
+
   #console-prompt {
     color: #f1f1f1 !important;
   }
-  
+
   #console-prompt::before {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjRGNTc2MTZDMTA2MTFFMDgwRUZGQ0JCMjgzMzU0MTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjRGNTc2MTdDMTA2MTFFMDgwRUZGQ0JCMjgzMzU0MTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MzM3N0Y2MUMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MzM3N0Y2MkMxMDUxMUUwODBFRkZDQkIyODMzNTQxNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Plf0eOsAAAB4SURBVHjaYvz//z8DMYAFxph+BqyhA8qtQFaUacKIUAgFLkBsDMSCUMXvYRJMaApdgfgsEKcB8W6oJqwK30MVr4YqOgPEodgUgoASkkkgjfewKSyHmqIEdYIJlEZR6ILk606oonsYwQMEe6A+PQtlowBGYgMcIMAAF2wcFPVNZx8AAAAASUVORK5CYII=) !important;
     color: #fff !important;
@@ -125,36 +103,36 @@
   #script-resource-views .script-view {
     color: #ccc !important;
   }
-  
+
   #storage-views .script-view,
   #elements-content,
   #network-views .text-editor-contents,
   #script-resource-views .script-view {
-    background: #242424 !important;
+    background: #000000 !important;
     font-size: 10px !important;
   }
 
   #elements-content .highlight { 
     color: #f1f1f1;
   }
-  
+
   #elements-content .selected {
     background-color: #4c4d5d !important;
   }
-  
+
   #elements-content .editing {
     color: #96cbfe !important;
-    background-color: #242424 !important;
+    background-color: #000000 !important;
   }
-  
+
   #elements-content .parent::before {
     content: url(chrome-devtools://devtools/Images/treeRightTriangleWhite.png) !important;
   }
-  
+
   #elements-content .parent.expanded::before {
     content: url(chrome-devtools://devtools/Images/treeDownTriangleWhite.png) !important;
   }
-  
+
   /**********************************************/
   /* HTML
   /**********************************************/
@@ -164,28 +142,28 @@
   #script-resource-views .webkit-html-comment {
     color: #7c7c7c !important;
   }
-  
+
   #storage-views .webkit-html-tag,
   #elements-content .webkit-html-tag,
   #network-views .webkit-html-tag,
   #script-resource-views .webkit-html-tag {
     color: #96cbfe !important;
   }
-  
+
   #storage-views .webkit-html-attribute-name,
   #elements-content .webkit-html-attribute-name,
   #network-views .webkit-html-attribute-name,
   #script-resource-views .webkit-html-attribute-name {
     color: #ffd2a7 !important;
   }
-  
+
   #storage-views .webkit-html-attribute-value,
   #elements-content .webkit-html-attribute-value,
   #network-views .webkit-html-attribute-value,
   #script-resource-views .webkit-html-attribute-value {
     color: #a8ff60 !important;
   }
-  
+
   #storage-views .webkit-html-text-node,
   #elements-content .webkit-html-text-node,
   #network-views .webkit-html-text-node,
@@ -196,14 +174,14 @@
   #script-resource-views .webkit-html-css-node {
     color: #c2c3c3 !important;
   }
-  
+
   #storage-views .webkit-html-js-node,
   #elements-content .webkit-html-js-node,
   #network-views .webkit-html-js-node,
   #script-resource-views .webkit-html-js-node {
     color: #c2c3c3 !important;
   }
-  
+
   #storage-views .webkit-html-resource-link,
   #elements-content .webkit-html-resource-link,
   #network-views .webkit-html-resource-link,
@@ -214,46 +192,46 @@
   #script-resource-views .webkit-html-external-link {
     color: #ff73fd !important;
   }
-  
+
   /**********************************************/
   /* CSS
   /**********************************************/
-  
+
   #storage-views .webkit-css-comment,
   #elements-content .webkit-css-comment,
   #network-views .webkit-css-comment,
   #script-resource-views .webkit-css-comment {
     color: #7c7c7c !important;
   }
-  
+
   #storage-views .webkit-css-selector,
   #elements-content .webkit-css-selector,
   #network-views .webkit-css-selector,
   #script-resource-views .webkit-css-selector {
     color: #62b1fe !important;
   }
-  
+
   #storage-views .webkit-css-property,
   #elements-content .webkit-css-property,
   #network-views .webkit-css-property,
   #script-resource-views .webkit-css-property {
     color: #fff !important;
   }
-  
+
   #storage-views .webkit-css-keyword,
   #elements-content .webkit-css-keyword,
   #network-views .webkit-css-keyword,
   #script-resource-views .webkit-css-keyword {
     color: #f9ee98 !important;
   }
-  
+
   #storage-views .webkit-css-number,
   #elements-content .webkit-css-number,
   #network-views .webkit-css-number,
   #script-resource-views .webkit-css-number {
     color: #ff73fd !important;
   }
-  
+
   #storage-views .webkit-css-important,
   #elements-content .webkit-css-important,
   #network-views .webkit-css-important,
@@ -264,25 +242,25 @@
   #script-resource-views .webkit-css-at-rule {
     color: #96cbfe !important;
   }
-  
+
   #storage-views .webkit-css-string,
   #elements-content .webkit-css-string,
   #network-views .webkit-css-string,
   #script-resource-views .webkit-css-string {
     color: #a8ff60 !important;
   }
-  
+
   #storage-views .webkit-css-url,
   #elements-content .webkit-css-url,
   #network-views .webkit-css-url,
   #script-resource-views .webkit-css-url {
     color: #c6c5fe !important;
   }
-  
+
   /**********************************************/
   /* JavaScript
   /**********************************************/
-  
+
   #storage-views .webkit-line-content,
   #elements-content .webkit-line-content,
   #network-views .webkit-line-content,
@@ -293,35 +271,35 @@
   #script-resource-views .webkit-javascript-ident {
     color: #fff !important;
   }
-  
+
   #storage-views .webkit-javascript-keyword,
   #elements-content .webkit-javascript-keyword,
   #network-views .webkit-javascript-keyword,
   #script-resource-views .webkit-javascript-keyword {
     color: #cfcb90 !important;
   }
-  
+
   #storage-views .webkit-javascript-comment,
   #elements-content .webkit-javascript-comment,
   #network-views .webkit-javascript-comment,
   #script-resource-views .webkit-javascript-comment {
     color: #7c7c7c !important;
   }
-  
+
   #storage-views .webkit-javascript-string,
   #elements-content .webkit-javascript-string,
   #network-views .webkit-javascript-string,
   #script-resource-views .webkit-javascript-string {
     color: #a8ff60 !important;
   }
-  
+
   #storage-views .webkit-javascript-number,
   #elements-content .webkit-javascript-number,
   #network-views .webkit-javascript-number,
   #script-resource-views .webkit-javascript-number {
     color: #ff73fd !important;
   }
-  
+
   #storage-views .webkit-javascript-regexp,
   #elements-content .webkit-javascript-regexp,
   #network-views .webkit-javascript-regexp,
