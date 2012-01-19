@@ -51,4 +51,4 @@ alias logs="sh ~/Scripts/logs.sh"
 alias uwlogs="sh ~/Scripts/uwlogs.sh"
 alias tklogs="sh ~/Scripts/tawlklogs.sh"
 
-#eval $(keychain --eval id_rsa 36C8AAA9)
+eval $(keychain --eval id_rsa 36C8AAA9)
