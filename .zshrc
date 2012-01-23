@@ -50,5 +50,6 @@ alias ls='ls -hF --color=always'
 alias logs="sh ~/Scripts/logs.sh"
 alias uwlogs="sh ~/Scripts/uwlogs.sh"
 alias tklogs="sh ~/Scripts/tawlklogs.sh"
+alias chromium="chromium --disk-cache-dir=/tmp/cache"
 
 eval $(keychain --eval id_rsa 36C8AAA9)

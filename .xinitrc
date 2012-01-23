@@ -1,5 +1,3 @@
 urxvtd &
-synergyc 31.3.3.7 &
-#sh /home/sellout/scripts/gizmo.sh &
+xrdb -merge ~/.Xresources
 awesome
-#startxfce4
