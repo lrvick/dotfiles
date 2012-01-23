@@ -8,7 +8,6 @@ urxvt*scrollBar:false
 urxvt*scrollBar_right:true
 urxvt*transpscrollbar:true
 urxvt*saveLines:32767
-urxvt*scrollBar: False
 urxvt*urgentOnBell: True
 urxvt*visualBell: False
 urxvt*skipScroll: True
