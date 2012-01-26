@@ -46,10 +46,3 @@ alias ls='ls -hF --color=always'
 
 export PS1="%{$fg[green]%}%n@%m%{$fg[blue]%}% > "
 
-#Set up Python Virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_LOG_DIR=~/.virtualenvs
-export VIRTUALENVWRAPPER_HOOK_DIR=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-
-eval $(keychain --eval id_rsa 36C8AAA9)
