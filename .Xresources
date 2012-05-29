@@ -11,7 +11,8 @@ urxvt*saveLines:32767
 urxvt*urgentOnBell: True
 urxvt*visualBell: False
 urxvt*skipScroll: True
-urxvt*font: xft:Terminus:autohint=true:antialias=true:size=7
+
+urxvt*font: xft:terminus:size=7
 
 ! Make URLS Clickable
 urxvt.perl-ext: default,matcher
