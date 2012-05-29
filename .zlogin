@@ -2,7 +2,7 @@
 export PATH="$HOME/bin:$PATH"
 
 # Start X if not running
-if [[ -z $DISPLAY && ! -e /tmp/.X11-unix/X0 && command -v startx &>/dev/null ]] && (( EUID )); then
+if [[ -z $DISPLAY && ! -e /tmp/.X11-unix/X0 && -x /usr/bin/startx ]] && (( EUID )); then
     exec startx
 else
     eval $(keychain --eval id_rsa 36C8AAA9)

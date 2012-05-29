@@ -44,12 +44,6 @@ alias du='du -c -h'
 alias mkdir='mkdir -p -v'
 alias ls='ls -hF --color=always'
 
-eval $(keychain --eval id_rsa 36C8AAA9)
-EDITOR="vim"
+export EDITOR="vim"
 
 export PS1="${VIRTUAL_ENV#*Envs/}%{$fg[green]%}%n@%m%{$fg[blue]%}% > "
-
-export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_LOG_DIR=~/.virtualenvs
-export VIRTUALENVWRAPPER_HOOK_DIR=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
