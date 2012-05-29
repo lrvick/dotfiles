@@ -50,10 +50,10 @@ look_paste_max_lines = 3
 
 [colors]
 col_real_white = off
-col_separator = blue
+col_separator = grey
 col_title = default
 col_title_more = lightmagenta
-col_title_bg = blue
+col_title_bg = grey
 col_chat = default
 col_chat_time = default
 col_chat_time_sep = brown
@@ -78,9 +78,9 @@ col_status_private = lightmagenta
 col_status_highlight = lightred
 col_status_data_other = default
 col_status_more = white
-col_status_bg = blue
+col_status_bg = grey
 col_infobar = black
-col_infobar_delimiters = blue
+col_infobar_delimiters = grey
 col_infobar_highlight = white
 col_infobar_bg = cyan
 col_input = default
