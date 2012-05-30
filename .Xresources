@@ -14,6 +14,11 @@ urxvt*skipScroll: True
 
 urxvt*font: xft:terminus:size=7
 
+! :Bind C-0, C-+ and C-= to activate small, medium, and big font size
+URxvt.keysym.C-0: command:\033]710;xft:Terminus:pixelsize=7\007
+URxvt.keysym.C-minus: command:\033]710;xft:Terminus:pixelsize=20\007
+URxvt.keysym.C-equal: command:\033]710;xft:Terminus:pixelsize=50\007
+
 ! Make URLS Clickable
 urxvt.perl-ext: default,matcher
 urxvt.urlLauncher: chromium
