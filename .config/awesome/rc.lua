@@ -131,17 +131,19 @@ function update_wirelesswidgets() --{{{ returns wireless or ethernet connection 
             f:close()
             linkq1,linkq2 = string.match(iwOut, 'Link Quality[=:](%d+)/(%d+)')
             essid   = string.match(iwOut, '.*ESSID[=:]"(.*)" ')
-            if linkq1 then
-                quality = math.floor(100*linkq1/linkq2)
-            end
-            if linkq1 then
-                bitrate = string.gsub(string.match(iwOut, 'Bit Rate[=:]([%s%w%.]*%/%a+)'), "%s", "")
+            if essid then
+                essidwidget:set_text(" " .. essid .. " ")
+                if linkq1 then
+                    quality = math.floor(100*linkq1/linkq2)
+                    lqwidget:set_text(quality .."%" .. " ")
+                end
+                if linkq1 then
+                    bitrate = string.gsub(string.match(iwOut, 'Bit Rate[=:]([%s%w%.]*%/%a+)'), "%s", "")
+                    ratewidget:set_text(bitrate .. " ")
+                end
             end
         end
     end
-    ratewidget:set_text(bitrate .. " ")
-    lqwidget:set_text(quality .."%" .. " ")
-    essidwidget:set_text(" " .. essid .. " ")
 end --}}}
 update_wirelesswidgets()
 wirelesswidgettimer = timer({ timeout = 30 })
@@ -184,7 +186,7 @@ function update_netspeedwidgets()
     netupwidget:set_text(" " .. net_up .. " ")
 end
 update_netspeedwidgets()
-netspeedwidgetstimer = timer({ timeout = 30 })
+netspeedwidgetstimer = timer({ timeout = 3 })
 netspeedwidgetstimer:connect_signal("timeout", update_netspeedwidgets)
 netspeedwidgetstimer:start()
 
@@ -334,10 +336,10 @@ end --}}}
 
 update_cpuspeedwidget()
 update_cpuloadwidget()
-cpuloadwidgettimer = timer({ timeout = 30 })
+cpuloadwidgettimer = timer({ timeout = 3 })
 cpuloadwidgettimer:connect_signal("timeout", update_cpuloadwidget)
 cpuloadwidgettimer:start()
-cpuspeedwidgettimer = timer({ timeout = 30 })
+cpuspeedwidgettimer = timer({ timeout = 3 })
 cpuspeedwidgettimer:connect_signal("timeout", update_cpuspeedwidget)
 cpuspeedwidgettimer:start()
 
