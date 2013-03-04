@@ -95,6 +95,7 @@ theme.memoryusedwidget_icon = os.getenv("HOME").."/.config/awesome/themes/defaul
 theme.networkupwidget_icon = os.getenv("HOME").."/.config/awesome/themes/default/icons/networkupwidget.png"
 theme.networkdownwidget_icon = os.getenv("HOME").."/.config/awesome/themes/default/icons/networkdownwidget.png"
 theme.batterywidget_icon = os.getenv("HOME").."/.config/awesome/themes/default/icons/batterywidget.png"
+theme.wirelesswidgets_icon = os.getenv("HOME").."/.config/awesome/themes/default/icons/wirelesswidgets.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:encoding=utf-8:textwidth=80
