@@ -74,10 +74,8 @@ set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --l
 # This version uses --status-fd messages
 set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 
-
-folder-hook =Work 'set record=+Sent from="Lance R. Vick <lance@goconvergence.com>"'
+folder-hook =Work 'set record=+Sent from="Lance R. Vick <lance@getpebble.com>"'
 folder-hook =Work 'set signature=$HOME/.mutt/signatures/work.txt'
-
 
 color hdrdefault blue default
 color quoted blue default
