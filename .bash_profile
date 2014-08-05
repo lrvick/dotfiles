@@ -20,3 +20,5 @@ if [[ -n "$DISPLAY" ]] && [[ $(tty) != /dev/tty1 ]]; then
   export XDG_DATA_HOME=~/.local/share/
   xbindkeys
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
