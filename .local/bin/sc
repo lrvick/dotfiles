@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "$1"]; then
+    killall screenkey
+    killall vlc
+else
+    screenkey
+    screen -d -m cvlc screen:// --screen-fps=12 --sout "#transcode{venc=x264,quality=10,scale=1,fps=12}:duplicate{dst=std{access=file,mux=mp4,dst=$1.mp4}}}" 2>/dev/null
+fi
