@@ -12,16 +12,16 @@ urxvt*urgentOnBell: True
 urxvt*visualBell: False
 urxvt*skipScroll: True
 
-urxvt*font: xft:Terminess Powerline:regular:pixelsize=15
-urxvt*imFont: xft:Terminess Powerline:regular:pixelsize=15
-urxvt*boldFont: xft:Terminess Powerline:bold:pixelsize=15
-urxvt*italicFont: xft:Terminess Powerline:italic:pixelsize=15
-urxvt*boldItalicFont: xft:Terminess Powerline:bold:pixelsize=15
+urxvt*font: xft:DejaVu Sans Mono for Powerline:regular:pixelsize=13
+!urxvt*imFont: xft:DejaVu Sans Mono for Powerline:regular:pixelsize=15
+!urxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=15
+!urxvt*italicFont: xft:DejaVu Sans Mono for Powerline:italic:pixelsize=15
+!urxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=15
 
 ! :Bind C-0, C-+ and C-= to activate small, medium, and big font size
-! URxvt.keysym.C-0: command:\033]710;xft:Terminus:pixelsize=7\007
-! URxvt.keysym.C-minus: command:\033]710;xft:Terminus:pixelsize=20\007
-! URxvt.keysym.C-equal: command:\033]710;xft:Terminus:pixelsize=50\007
+URxvt.keysym.C-0: command:\033]710;xft:DejaVu Sans Mono for Powerline:pixelsize=7\007
+URxvt.keysym.C-minus: command:\033]710;xft:DejaVu Sans Mono for Powerline:pixelsize=13\007
+URxvt.keysym.C-equal: command:\033]710;xft:DejaVu Sans Mono for Powerline:pixelsize=20\007
 
 ! Make URLS Clickable
 urxvt.perl-ext: default,matcher
