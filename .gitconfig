@@ -1,3 +1,5 @@
 [user]
 	email = lance@lrvick.net
 	name = lrvick
+[push]
+	default = simple
