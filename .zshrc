@@ -45,4 +45,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/heroku/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
-source `pip show powerline | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
+source `pip show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
