@@ -48,4 +48,4 @@ export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 export PATH="$HOME/Sources/gcc-arm-none-eabi/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
-source `pip show powerline | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
+source `pip show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
