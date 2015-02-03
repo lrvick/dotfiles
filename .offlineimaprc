@@ -1,6 +1,6 @@
 [general]
 ui = TTY.TTYUI
-accounts = Work
+accounts = Personal, Pebble
 #accounts = Personal, Work
 pythonfile=~/.offlineimap.py
 fsync = False
@@ -24,39 +24,42 @@ holdconnectionopen = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 remoteuser = lance@lrvick.net
 remotepasseval = subprocess.check_output(["pass", "Personal/gmail"]).strip()
-nametrans = lambda folder: { '[Gmail]/Sent Mail': 'sent',
+nametrans = lambda folder: { '[Gmail]/All Mail':  'all',
+                             '[Gmail]/Sent Mail': 'sent',
                              '[Gmail]/Chats':     'chats',
                              '[Gmail]/Spam':      'spam',
-                             '[Gmail]/All Mail':  'all',
                            }.get(folder, folder)
-folderfilter = lambda foldername: foldername in [ '[Google Mail]/All Mail',
-                                                  '[Google Mail]/Sent Mail' ]
+folderfilter = lambda foldername: foldername in [ '[Gmail]/All Mail',
+                                                  '[Gmail]/Sent Mail',
+                                                  '[Gmail]/Chats',
+                                                  '[Gmail]/Spam' ]
 
 
-[Account Work]
-localrepository = Work-Local
-remoterepository = Work-Remote
+[Account Pebble]
+localrepository = Pebble-Local
+remoterepository = Pebble-Remote
 status_backend = sqlite
 autorefresh = 5
 quick = 10
 #postsynchook = notmuch new
 
-[Repository Work-Local]
+[Repository Pebble-Local]
 type = Maildir
-localfolders = ~/Mail/Work
+localfolders = ~/Mail/Pebble
 
-[Repository Work-Remote]
+[Repository Pebble-Remote]
 type = Gmail
 keepalive = 60
 holdconnectionopen = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 remoteuser = lance@pulse-dev.net
 remotepasseval = subprocess.check_output(["pass", "Pebble/gmail"]).strip()
-remotepasseval = subprocess.check_output(["pass", "Personal/gmail"]).strip()
-nametrans = lambda folder: { '[Gmail]/Sent Mail': 'sent',
+nametrans = lambda folder: { '[Gmail]/All Mail':  'all',
+                             '[Gmail]/Sent Mail': 'sent',
                              '[Gmail]/Chats':     'chats',
                              '[Gmail]/Spam':      'spam',
-                             '[Gmail]/All Mail':  'all',
                            }.get(folder, folder)
-folderfilter = lambda foldername: foldername in [ '[Google Mail]/All Mail',
-                                                  '[Google Mail]/Sent Mail' ]
+folderfilter = lambda foldername: foldername in [ '[Gmail]/All Mail',
+                                                  '[Gmail]/Sent Mail',
+                                                  '[Gmail]/Chats',
+                                                  '[Gmail]/Spam' ]
