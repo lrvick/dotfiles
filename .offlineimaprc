@@ -1,7 +1,6 @@
 [general]
 ui = TTY.TTYUI
 accounts = Personal, Pebble
-#accounts = Personal, Work
 pythonfile=~/.offlineimap.py
 fsync = False
 
