@@ -1,0 +1,62 @@
+[general]
+ui = TTY.TTYUI
+accounts = Work
+#accounts = Personal, Work
+pythonfile=~/.offlineimap.py
+fsync = False
+
+[Account Personal]
+localrepository = Personal-Local
+remoterepository = Personal-Remote
+status_backend = sqlite
+autorefresh = 5
+quick = 10
+#postsynchook = notmuch new
+
+[Repository Personal-Local]
+type = Maildir
+localfolders = ~/Mail/Personal
+
+[Repository Personal-Remote]
+type = Gmail
+keepalive = 60
+holdconnectionopen = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser = lance@lrvick.net
+remotepasseval = subprocess.check_output(["pass", "Personal/gmail"]).strip()
+nametrans = lambda folder: { '[Gmail]/Sent Mail': 'sent',
+                             '[Gmail]/Chats':     'chats',
+                             '[Gmail]/Spam':      'spam',
+                             '[Gmail]/All Mail':  'all',
+                           }.get(folder, folder)
+folderfilter = lambda foldername: foldername in [ '[Google Mail]/All Mail',
+                                                  '[Google Mail]/Sent Mail' ]
+
+
+[Account Work]
+localrepository = Work-Local
+remoterepository = Work-Remote
+status_backend = sqlite
+autorefresh = 5
+quick = 10
+#postsynchook = notmuch new
+
+[Repository Work-Local]
+type = Maildir
+localfolders = ~/Mail/Work
+
+[Repository Work-Remote]
+type = Gmail
+keepalive = 60
+holdconnectionopen = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser = lance@pulse-dev.net
+remotepasseval = subprocess.check_output(["pass", "Pebble/gmail"]).strip()
+remotepasseval = subprocess.check_output(["pass", "Personal/gmail"]).strip()
+nametrans = lambda folder: { '[Gmail]/Sent Mail': 'sent',
+                             '[Gmail]/Chats':     'chats',
+                             '[Gmail]/Spam':      'spam',
+                             '[Gmail]/All Mail':  'all',
+                           }.get(folder, folder)
+folderfilter = lambda foldername: foldername in [ '[Google Mail]/All Mail',
+                                                  '[Google Mail]/Sent Mail' ]
