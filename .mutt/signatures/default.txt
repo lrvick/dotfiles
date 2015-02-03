@@ -1,21 +1,7 @@
-Lance R. Vick
-__________________________________________________
-Cell      -  407.283.7596
-Gtalk     -  lance@lrvick.net
-Website   -  http://lrvick.net
-PGP Key   -  http://lrvick.net/0x36C8AAA9.asc
-keyserver -  subkeys.pgp.net
-__________________________________________________
-
-Security Notes: 
-
-Do not trust any email you receive from me as 
-legitimate without my GPG signature unique to this
-message, that you have personally verified.
-
-Please refrain from sending me any sensitive 
-information via email, unless GPG encrypted to my
-public key. I assume no responsibilty for the 
-protection of any unencrypted data sent to me.
-
---------------------------------------------------
+Lance R. Vick | Web Engineer, Pebble
+______________________________________
+Cell     -  407.283.7596
+IRC      -  lrvick@irc.freenode.net
+Website  -  http://lrvick.net
+PGP Key  -  E90A401336C8AAA9
+______________________________________
