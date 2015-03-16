@@ -4,14 +4,11 @@ if [[ -z $DISPLAY && ! -e /tmp/.X11-unix/X0 && -x /usr/bin/startx ]] && (( EUID 
 else
     # GPG Agent Setup
     envfile="$HOME/.gnupg/gpg-agent.env"
-    if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
-        eval "$(cat "$envfile")"
-    else
-        eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+    if [[ ! -e "$envfile" ]] || [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]]; then
+        gpg-agent --daemon --enable-ssh-support > $envfile
     fi
-    export GPG_AGENT_INFO  # the env file does not contain the export statement
+    eval "$(cat "$envfile")"
     export SSH_AUTH_SOCK   # enable gpg-agent for ssh
-
 fi
 
 # Load RVM into a shell session *as a function*
