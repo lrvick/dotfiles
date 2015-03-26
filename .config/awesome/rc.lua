@@ -197,7 +197,7 @@ ipwidget_icon:set_resize(false)
 ipwidget_icon_m = wibox.layout.margin(ipwidget_icon, 5, 0, 5, 0)
 ipwidget = wibox.widget.textbox()
 function update_ipwidget()
-    local f = io.popen("/sbin/ifconfig eth0")
+    local f = io.popen("/sbin/ifconfig enp0s20u1u1u1")
     if f then
         local ifOut = f:read('*a')
         f:close()

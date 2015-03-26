@@ -37,7 +37,6 @@ DEFAULT_USER="lrvick"
 plugins=(git)
 #
 
-# Customize to your needs...
 export PATH="/usr/local/bin:/usr/bin:/bin:/opt/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/android-sdk/platform-tools:$PATH"
@@ -45,7 +44,11 @@ export PATH="/opt/android-sdk/tools:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/Sources/qemu/build/arm-softmmu:$PATH"
 export PATH="$HOME/Sources/gcc-arm-none-eabi/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 source `pip show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
+
+[ -f /home/lrvick/.travis/travis.sh ] && source /home/lrvick/.travis/travis.sh
