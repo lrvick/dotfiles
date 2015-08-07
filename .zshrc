@@ -34,7 +34,7 @@ DEFAULT_USER="lrvick"
 ## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 ## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 ## Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git vi-mode docker pass systemdi z)
 #
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/opt/bin"
@@ -47,6 +47,7 @@ export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/Sources/qemu/build/arm-softmmu:$PATH"
 export PATH="$HOME/Sources/gcc-arm-none-eabi/bin:$PATH"
+export PATH="$HOME/Sources/PebbleSDK/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 source `pip show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
