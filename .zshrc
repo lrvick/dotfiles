@@ -50,6 +50,6 @@ export PATH="$HOME/Sources/gcc-arm-none-eabi/bin:$PATH"
 export PATH="$HOME/Sources/PebbleSDK/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
-source `pip show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
+source `pip2 show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
 
 [ -f /home/lrvick/.travis/travis.sh ] && source /home/lrvick/.travis/travis.sh
