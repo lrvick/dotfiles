@@ -114,7 +114,7 @@ wirelesswidgets_icon       = wibox.widget.imagebox()
 wirelesswidgets_icon:set_image(beautiful.wirelesswidgets_icon)
 wirelesswidgets_icon:set_resize(false)
 wirelesswidgets_icon_m = wibox.layout.margin(wirelesswidgets_icon, 5, 0, 5, 0)
-wireless_dev = "eth0"
+wireless_dev = "wlp1s0"
 ratewidget = wibox.widget.textbox()
 essidwidget = wibox.widget.textbox()
 lqwidget = wibox.widget.textbox()
@@ -219,7 +219,7 @@ batterywidget_icon:set_image(beautiful.batterywidget_icon)
 batterywidget_icon:set_resize(false)
 batterywidget_icon_m = wibox.layout.margin(batterywidget_icon, 5, 0, 5, 0)
 batterywidget = wibox.widget.textbox()
-battery="0"
+battery="1"
 function update_batterywidget() --{{{ updates batterywidget with current battery charge level
     local a = io.popen("cat /sys/class/power_supply/BAT"..battery.."/energy_full")
     if a then
