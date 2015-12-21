@@ -30,10 +30,6 @@ urxvt.urlLauncher: chromium
 urxvt.keysym.C-Delete: perl:matcher
 urxvt.underlineURLs: true
 
-Xft.antialias:           rgba
-Xft.hinting:             true
-Xft.hintstyle:           hintfull
-
 *background: #002b36
 *foreground: #657b83
 !!*fading: 40
@@ -73,3 +69,16 @@ Xft.hintstyle:           hintfull
 !! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
+!! HiDPI
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+!Xft.antialias:           rgba
+!Xft.hinting:             true
+
