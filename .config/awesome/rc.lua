@@ -197,7 +197,7 @@ ipwidget_icon:set_resize(false)
 ipwidget_icon_m = wibox.layout.margin(ipwidget_icon, 5, 0, 5, 0)
 ipwidget = wibox.widget.textbox()
 function update_ipwidget()
-    local f = io.popen("/sbin/ifconfig enp0s20u1u1u1")
+    local f = io.popen("/sbin/ifconfig wlp1s0")
     if f then
         local ifOut = f:read('*a')
         f:close()
@@ -219,16 +219,16 @@ batterywidget_icon:set_image(beautiful.batterywidget_icon)
 batterywidget_icon:set_resize(false)
 batterywidget_icon_m = wibox.layout.margin(batterywidget_icon, 5, 0, 5, 0)
 batterywidget = wibox.widget.textbox()
-battery="1"
+battery="0"
 function update_batterywidget() --{{{ updates batterywidget with current battery charge level
-    local a = io.popen("cat /sys/class/power_supply/BAT"..battery.."/energy_full")
+    local a = io.popen("cat /sys/class/power_supply/BAT"..battery.."/charge_full")
     if a then
         for line in a:lines() do
             full = line
         end
     end
     a:close()
-    local b = io.popen("cat /sys/class/power_supply/BAT"..battery.."/energy_now")
+    local b = io.popen("cat /sys/class/power_supply/BAT"..battery.."/charge_now")
     if b then
         for line in b:lines() do
             now = line

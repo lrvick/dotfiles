@@ -4,7 +4,7 @@
 
 theme = {}
 
-theme.font          = "sans 9"
+theme.font          = "sans 15"
 
 theme.wallpaper_cmd = { "nitrogen --restore" }
 

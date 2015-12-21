@@ -12,7 +12,7 @@ urxvt*urgentOnBell: True
 urxvt*visualBell: False
 urxvt*skipScroll: True
 
-urxvt*font: xft:Hack:pixelsize=13:antialias=true
+urxvt*font: xft:Hack:pixelsize=21:antialias=true
 !urxvt*font: xft:DejaVu Sans Mono for Powerline:regular:pixelsize=13
 !urxvt*imFont: xft:DejaVu Sans Mono for Powerline:regular:pixelsize=15
 !urxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=15
