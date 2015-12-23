@@ -1,0 +1,81 @@
+# Backward, Forward, Full Screen & Refresh is just for web browser
+#Backward
+"xvkbd -xsendevent -text "\A\[Left]""
+    m:0x0 + c:67
+    F1 
+
+#Full Screen
+"xvkbd -xsendevent -text "\[F11]""
+    m:0x0 + c:70
+    F4 
+
+#Forward
+"xvkbd -xsendevent -text "\A\[Right]""
+    m:0x0 + c:68
+    F2 
+
+#Refresh
+"xvkbd -xsendevent -text "\Cr""
+    m:0x0 + c:69
+    F3 
+
+# on ChromeBook, it "Enter Overview mode, which shows all windows (F5)", see also https://support.google.com/chromebook/answer/1047364?hl
+# here it work at KDE, it "Switch to next focused window", see also http://community.linuxmint.com/tutorial/view/47
+#Switch Window
+"xvkbd -xsendevent -text "\A\t""
+    m:0x0 + c:71
+    F5 
+
+#Backlight Down
+"samus-brightness --decrease"
+    m:0x0 + c:72
+    F6 
+
+#Backlight Up
+"samus-brightness --increase"
+    m:0x0 + c:73
+    F7 
+
+#Mute
+"amixer set Master toggle"
+    m:0x0 + c:74
+    F8 
+
+#Decrease Volume
+"amixer set Master 5- unmute"
+    m:0x0 + c:75
+    F9 
+
+#Increase Volume
+"amixer set Master 5+ unmute"
+    m:0x0 + c:76
+    F10 
+
+# added Home, End, Pg Up, Pg Down, and Del keys using the Alt+arrow key combos
+#Delete
+"xvkbd -xsendevent -text '\[Delete]'"
+    m:0x8 + c:22
+    Alt + BackSpace 
+
+#End
+"xvkbd -xsendevent -text '\[End]'"
+    m:0x8 + c:114
+    Alt + Right 
+
+#Home
+"xvkbd -xsendevent -text '\[Home]'"
+    m:0x8 + c:113
+    Alt + Left 
+
+#Page Down
+"xvkbd -xsendevent -text '\[Page_Down]'"
+    m:0x8 + c:116
+    Alt + Down 
+
+#Page Up
+"xvkbd -xsendevent -text '\[Page_Up]'"
+    m:0x8 + c:111
+    Alt + Up 
+
+#
+# End of xbindkeys configuration
