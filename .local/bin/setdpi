@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Adjust font/scaling settings based on DPI of current display
+#
+# Should be run very early such as in .xinitrc before your window manager
+# is launched
+
+output="$(xrandr | grep -v disconnected | grep connected | cut -d' ' -f1)"
+resolution=$(xrandr | grep -A1 $output | tail -n1 | awk '{ print $1 }')
+horiz_res=$(echo $resolution | sed 's/\([0-9]\+\)x.*/\1/g')
+vert_res=$(echo $resolution | sed 's/[0-9]\+x\([0-9]\+\)/\1/g')
+
+if (( ( $horiz_res > 2500 ) && ( $vert_res > 1600 ) )); then
+    export DEVICE_SCALE_FACTOR=1.5
+    # set font sizes etc here
+elif
+    export DEVICE_SCALE_FACTOR=1
+fi
+
+#QT does the right thing. so let it
+export QT_DEVICE_PIXEL_RATIO=auto
