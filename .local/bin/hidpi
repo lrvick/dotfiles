@@ -3,4 +3,4 @@ resolution=$(xrandr | grep -A1 $output | tail -n1 | awk '{ print $1 }')
 horiz_res=$(echo $resolution | sed 's/\([0-9]\+\)x.*/\1/g')
 vert_res=$(echo $resolution | sed 's/[0-9]\+x\([0-9]\+\)/\1/g')
 
-[[ $horiz_res > 2000 ]] && [[ $vert_res > 2000 ]]
+[[ $horiz_res > 2500 ]] && [[ $vert_res > 1600 ]]
