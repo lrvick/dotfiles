@@ -58,3 +58,5 @@ source $ZSH/oh-my-zsh.sh
 source `pip2 show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
 
 [ -f /home/lrvick/.travis/travis.sh ] && source /home/lrvick/.travis/travis.sh
+
+[ -f ~/.device ] && source ~/.device # device specific settings kept out of version control

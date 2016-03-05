@@ -1,8 +1,8 @@
 # Backward, Forward, Full Screen & Refresh is just for web browser
 #Backward
-"xvkbd -xsendevent -text "\A\[Left]""
-    m:0x0 + c:67
-    F1 
+#"xvkbd -xsendevent -text "\A\[Left]""
+#    m:0x0 + c:67
+#    F1 
 
 #Full Screen
 "xvkbd -xsendevent -text "\[F11]""
@@ -10,9 +10,9 @@
     F4 
 
 #Forward
-"xvkbd -xsendevent -text "\A\[Right]""
-    m:0x0 + c:68
-    F2 
+#"xvkbd -xsendevent -text "\A\[Right]""
+#    m:0x0 + c:68
+#    F2 
 
 #Refresh
 "xvkbd -xsendevent -text "\Cr""
@@ -37,17 +37,17 @@
     F7 
 
 #Mute
-"amixer set Master toggle"
+"pamixer --sink 1 -t"
     m:0x0 + c:74
     F8 
 
 #Decrease Volume
-"amixer set Master 5- unmute"
+"pamixer --sink 1 -d 5"
     m:0x0 + c:75
     F9 
 
 #Increase Volume
-"amixer set Master 5+ unmute"
+"pamixer --sink 1 -i 5"
     m:0x0 + c:76
     F10 
 
