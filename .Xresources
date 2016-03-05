@@ -12,25 +12,16 @@ urxvt*urgentOnBell: True
 urxvt*visualBell: False
 urxvt*skipScroll: True
 
-URxvt.perl-ext-common: default,matcher,font-size
-
 ! Make URLS Clickable
-urxvt.urlLauncher: chromium
-urxvt.keysym.C-Delete: perl:matcher
-urxvt.underlineURLs: true
+URxvt.perl-ext-common:      default,matcher,clipboard,url-select,keyboard-select,font-size
+URxvt.matcher.button: 1
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
 
 urxvt*font: xft:Hack:pixelsize=21:antialias=true
-!urxvt*font: xft:DejaVu Sans Mono for Powerline:regular:pixelsize=13
-!urxvt*imFont: xft:DejaVu Sans Mono for Powerline:regular:pixelsize=15
-!urxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=15
-!urxvt*italicFont: xft:DejaVu Sans Mono for Powerline:italic:pixelsize=15
-!urxvt*boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=15
-
-! :Bind C-0, C-+ and C-= to activate small, medium, and big font size
-!URxvt.keysym.C-0: command:\033]710;xft:Hack:pixelsize=12\007
-!URxvt.keysym.C-minus: command:\033]710;xft:Hack:pixelsize=21\007
-!URxvt.keysym.C-equal: command:\033]710;xft:Hack:pixelsize=40\007
-
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
 URxvt.keysym.C-S-Up:   font-size:incglobal
