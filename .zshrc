@@ -37,7 +37,7 @@ DEFAULT_USER="lrvick"
 plugins=(git vi-mode docker pass systemdi z)
 #
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/opt/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/opt/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/android-sdk/platform-tools:$PATH"
 export PATH="/opt/android-sdk/tools:$PATH"
@@ -48,6 +48,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/Sources/qemu/build/arm-softmmu:$PATH"
 export PATH="$HOME/Sources/gcc-arm-none-eabi/bin:$PATH"
 export PATH="$HOME/Sources/PebbleSDK/bin:$PATH"
+export PATH="$HOME/.local/lib/go/bin:$PATH"
+
+export QT_DEVICE_PIXEL_RATIO=auto
+
+export GOPATH=~/.local/lib/go/
 
 source $ZSH/oh-my-zsh.sh
 source `pip2 show powerline-status | grep Location | sed 's/Location: //g'`/powerline/bindings/zsh/powerline.zsh
