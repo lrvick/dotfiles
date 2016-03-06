@@ -10,3 +10,6 @@
 [submodule "Sources/powerline"]
 	path = Sources/powerline
 	url = https://github.com/Lokaltog/powerline
+[submodule ".config/awesome/lain"]
+	path = .config/awesome/lain
+	url = https://github.com/copycat-killer/lain.git
