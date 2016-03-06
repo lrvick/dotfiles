@@ -8,7 +8,7 @@ fi
 
 source setdpi
 
-nitrogen --restore
+nitrogen --set-scaled ~/.wallpaper/tags.jpg 
 
 chromium &
 urxvtd &
