@@ -2,6 +2,7 @@ slock
 
 xrdb -merge ~/.Xresources
 
+source ~/.device
 if [[ "$MODEL" == "samus" ]]; then
     xbindkeys ~/.xbindkeys/samus
 fi
