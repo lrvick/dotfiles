@@ -60,3 +60,11 @@ source `pip2 show powerline-status | grep Location | sed 's/Location: //g'`/powe
 [ -f /home/lrvick/.travis/travis.sh ] && source /home/lrvick/.travis/travis.sh
 
 [ -f ~/.device ] && source ~/.device # device specific settings kept out of version control
+
+if [ -z "$TMUX" ]; then
+    if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
+        unlink "$HOME/.ssh/agent_sock" 2>/dev/null
+        ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+        export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+    fi
+fi
