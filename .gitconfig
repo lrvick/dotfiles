@@ -4,3 +4,5 @@
 	signingkey = 36C8AAA9
 [push]
 	default = simple
+[color]
+	ui = auto
