@@ -6,5 +6,5 @@
 	default = simple
 [color]
     ui = auto
-[commit]
-    gpgsign = true
+#[commit]
+#    gpgsign = true
