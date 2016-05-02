@@ -1,0 +1,42 @@
+## hashbang ##
+An online community where we each and learn technology via open source tools
+and unix philosphy. To facilitate this volunteers provide and administer many
+standard services
+such as mail, shell, irc, etc to the public.
+- Role: Founder/Administrator
+- URL: https://hashbang.sh
+- Source: https://github.com/hashbang
+
+## Orbit ##
+A "Version Controlled Immutable Deployment" system.
+The idea being that all changes to hosted software infrastructure of any kind
+must pass through version control, and the services themselves must be
+immutable between deploys all the way down to configuration, environment
+variables, scaling behaviour, alarms, services, server provisioning, etc.
+- Role: Co-Maintainer
+- Source: https://github.com/pebble/git-deploy
+
+## Rant ##
+CLI driven, blog aware static site generator in Python.
+Powers https://lrvick.net.
+- Role: Author
+- Source: https://github.com/lrvick/rant
+
+## hyve ##
+Social media crawling engine in JS capable of operating embedded in a
+client-side web application, or server-side NodeJS.
+- Source: https://github.com/lrvick/hyve
+
+## Synt ##
+Social sentiment flagger intended to judge given text as: positive, neutral
+or negative.
+- Source: https://github.com/lrvick/synt
+
+## kral ##
+Provides a unified way to collect and distribute data live from potentially any social network
+- Source: https://github.com/lrvick/kral
+
+## grfety ##
+A full screen real-time multi-user drawing application using NodeJS, SockJS,
+and HTML5 canvas http://grfety.me
+- Source: https://github.com/lrvick/grfety
