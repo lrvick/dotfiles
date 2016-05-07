@@ -1,0 +1,62 @@
+## hashbang ##
+An online community where we each and learn technology via open source tools
+and unix philosphy. To facilitate this volunteers provide and administer many
+standard services
+such as mail, shell, irc, etc to the public.
+- Role: Founder/Administrator
+- URL: https://hashbang.sh
+- Source: https://github.com/hashbang
+
+## Orbit ##
+A "Version Controlled Immutable Deployment" system.
+The idea being that all changes to hosted software infrastructure of any kind
+must pass through version control, and the services themselves must be
+immutable between deploys all the way down to configuration, environment
+variables, scaling behaviour, alarms, services, server provisioning, etc.
+- Role: Co-Author/Maintainer
+- Source: https://github.com/pebble/git-deploy
+
+## Pae.st ##
+A simple pastebin implementation one can use with raw curl, or from a web
+interface. `echo "foo" | curl -F 'p=<-' pae.st`
+- Role: Co-Author/Maintainer
+- URL: https://pae.st
+- Source 1: https://github.com/hashbang/paest-client
+- Source 2: https://github.com/hashbang/paest-server
+
+## Rant ##
+CLI driven, blog aware static site generator in Python.
+Powers https://lrvick.net.
+- Role: Author
+- Source: https://github.com/lrvick/rant
+
+## hyve ##
+Social media crawling engine in JS capable of operating embedded in a
+client-side web application, or server-side NodeJS.
+- Role: Primary Author
+- Source: https://github.com/lrvick/hyve
+
+## synt ##
+Social sentiment flagger intended to judge given text as: positive, neutral
+or negative.
+- Role: Primary Author
+- Source: https://github.com/lrvick/synt
+
+## kral ##
+Provides a unified way to collect and distribute data live from potentially any social network
+- Role: Primary Author
+- Source: https://github.com/lrvick/kral
+
+## grfety ##
+A full screen real-time multi-user drawing application using NodeJS, SockJS,
+and HTML5 canvas http://grfety.me
+- Role: Author
+- Source: https://github.com/lrvick/grfety
+
+## Others ##
+The above projects are just the ones that are either maintained, or have any
+hope of ever getting love. I also have piles of other random experiments on my
+Youtube, Github and blog. Talk to me about anything!
+- Blog: https://lrvick.net
+- Video: https://youtube.com/lrvick
+- Code: https://github.com/lrvick
