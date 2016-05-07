@@ -1,0 +1,34 @@
+#!/bin/bash
+
+export QEMU_AUDIO_DRV=pa
+export QEMU_PA_SOURCE=input
+export QEMU_PA_SAMPLES=4096
+export QEMU_PA_SINK=alsa_output.pci-0000_00_1f.3.analog-stereo
+
+cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd /tmp/my_vars.fd
+qemu-system-x86_64 \
+ -soundhw hda \
+ -enable-kvm \
+ -m 8G \
+ -cpu host,kvm=off \
+ -rtc clock=host,base=utc \
+ -smp 8,sockets=1,cores=4,threads=2 \
+ -machine type=q35,accel=kvm \
+ -device vfio-pci,host=01:00.0,multifunction=on,x-vga=on \
+ -device vfio-pci,host=01:00.1 \
+ -device vfio-pci,host=00:14.0 \
+ -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd \
+ -drive if=pflash,format=raw,file=/tmp/my_vars.fd \
+ -usb \
+ -device usb-host,hostbus=1,hostport=6 \
+ -device virtio-scsi-pci,id=scsi \
+ -drive file=/dev/sda,id=disk,format=raw,if=none \
+ -device scsi-hd,drive=disk \
+ -nographic \
+ -drive file=/home/lrvick/Disks/virtio.iso,id=virtiocd,if=none -device ide-cd,bus=ide.1,drive=virtiocd \
+ -vga none
+
+ #-net nic,model=virtio -net tap,ifname=tap0,script=no,downscript=no \
+ #-vga std
+ #-cdrom /home/lrvick/Disks/Win10.iso \
+ #-boot d

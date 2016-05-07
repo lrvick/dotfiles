@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export QEMU_ALSA_DAC_BUFFER_SIZE=512
+export QEMU_ALSA_DAC_PERIOD_SIZE=170
+export QEMU_AUDIO_DRV=alsa
+
+cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd /tmp/my_vars.fd
+qemu-system-x86_64 \
+ -soundhw es1370 \
+ -enable-kvm \
+ -m 8G \
+ -cpu host,kvm=off \
+ -rtc clock=host,base=utc \
+ -smp 8,sockets=1,cores=4,threads=2 \
+ -machine type=q35,accel=kvm \
+ -device vfio-pci,host=01:00.0,multifunction=on,x-vga=on \
+ -device vfio-pci,host=01:00.1 \
+ -device vfio-pci,host=00:14.0 \
+ -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd \
+ -drive if=pflash,format=raw,file=/tmp/my_vars.fd \
+ -usb \
+ -device usb-host,hostbus=1,hostport=6 \
+ -device virtio-scsi-pci,id=scsi \
+ -drive file=/dev/sdb,id=disk,format=raw,if=none -device scsi-hd,drive=disk \
+ -vga none
+
+ #-cdrom /home/lrvick/Disks/SteamOSDVD.iso \
+
