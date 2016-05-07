@@ -1,34 +1,55 @@
 #!/bin/bash
 
+# CPU
+opts="$opts -machine type=q35,accel=kvm"
+opts="$opts -enable-kvm"
+opts="$opts -cpu host,kvm=off"
+opts="$opts -smp 8,sockets=1,cores=4,threads=2"
+
+# Memory
+opts="$opts -m 8G"
+
+# Clock
+opts="$opts -rtc clock=host,base=utc"
+
+# Sound
+opts="$opts -soundhw hda"
 export QEMU_AUDIO_DRV=pa
 export QEMU_PA_SOURCE=input
 export QEMU_PA_SAMPLES=4096
 export QEMU_PA_SINK=alsa_output.pci-0000_00_1f.3.analog-stereo
 
-cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd /tmp/my_vars.fd
-qemu-system-x86_64 \
- -soundhw hda \
- -enable-kvm \
- -m 8G \
- -cpu host,kvm=off \
- -rtc clock=host,base=utc \
- -smp 8,sockets=1,cores=4,threads=2 \
- -machine type=q35,accel=kvm \
- -device vfio-pci,host=01:00.0,multifunction=on,x-vga=on \
- -device vfio-pci,host=01:00.1 \
- -device vfio-pci,host=00:14.0 \
- -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd \
- -drive if=pflash,format=raw,file=/tmp/my_vars.fd \
- -usb \
- -device usb-host,hostbus=1,hostport=6 \
- -device virtio-scsi-pci,id=scsi \
- -drive file=/dev/sda,id=disk,format=raw,if=none \
- -device scsi-hd,drive=disk \
- -nographic \
- -drive file=/home/lrvick/Disks/virtio.iso,id=virtiocd,if=none -device ide-cd,bus=ide.1,drive=virtiocd \
- -vga none
+# VGA Passthrough
+cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd ~/.tmp/my_vars.fd
+opts="$opts -device vfio-pci,host=01:00.0,multifunction=on,x-vga=on"
+opts="$opts -device vfio-pci,host=01:00.1"
+opts="$opts -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd"
+opts="$opts -drive if=pflash,format=raw,file=$HOME/.tmp/my_vars.fd"
 
- #-net nic,model=virtio -net tap,ifname=tap0,script=no,downscript=no \
- #-vga std
- #-cdrom /home/lrvick/Disks/Win10.iso \
- #-boot d
+# USB Passthrough
+opts="$opts -usb"
+opts="$opts -device usb-host,hostbus=1,hostport=6"
+opts="$opts -device vfio-pci,host=00:14.0"
+
+# Disk
+opts="$opts -device virtio-scsi-pci,id=scsi"
+opts="$opts -drive file=/dev/sda,id=disk,format=raw,if=none"
+opts="$opts -device scsi-hd,drive=disk"
+
+# Headless on host
+opts="$opts -nographic"
+opts="$opts -vga none"
+
+# Improved network performance if you have a tap device configured
+#opts="$opts -net nic,model=virtio -net tap,ifname=tap0,script=no,downscript=no"
+
+# Install only
+#opts="$opts -drive file=/home/lrvick/Disks/virtio.iso,id=virtiocd,if=none"
+#opts="$opts -device ide-cd,bus=ide.1,drive=virtiocd"
+#opts="$opts -cdrom /home/lrvick/Disks/Win10.iso"
+#opts="$opts -boot d"
+
+# Start Qemu
+# Warning: Currently running as root. Solutions for user-mode exist.
+# See: http://www.evonide.com/non-root-gpu-passthrough-setup/
+sudo qemu-system-x86_64 $opts
