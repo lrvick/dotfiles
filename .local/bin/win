@@ -52,7 +52,7 @@ qemu_opt "-smp 8,sockets=1,cores=4,threads=2"
 # Memory
 hugepage_size=$(grep Hugepagesize /proc/meminfo | awk '{ print $2}')
 hugepages=$((((${gpu_mem%?} + ${guest_mem%?}) * 1024) / 2))
-#echo $hugepages > /proc/sys/vm/nr_hugepages 
+sudo sysctl -w vm.nr_hugepages=$hugepages
 qemu_opt "-m $guest_mem"
 qemu_opt "-mem-path /dev/hugepages"
 
@@ -108,8 +108,9 @@ fi
 # 	Warning: Currently running as root. Solutions for user-mode exist.
 # 	See: http://www.evonide.com/non-root-gpu-passthrough-setup/
 echo "${qemu_envs} ${qemu_bin} ${qemu_opts} $*"
-#eval "sudo ${qemu_envs} ${qemu_bin} ${qemu_opts} $*"
+eval "sudo ${qemu_envs} ${qemu_bin} ${qemu_opts} $*"
 
 # Cleanup
 echo Removing $hugepages hugepages
-#echo $(($(cat /proc/sys/vm/nr_hugepages) - ${hugepages})) > /proc/sys/vm/nr_hugepages
+new_hugepages=$(($(cat /proc/sys/vm/nr_hugepages) - ${hugepages}))
+sudo sysctl -w vm.nr_hugepages=$new_hugepages
