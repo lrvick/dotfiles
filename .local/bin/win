@@ -1,16 +1,38 @@
 #!/bin/bash
 
+# Chipset
+opts="$opts -machine type=q35,accel=kvm" # Q35 is a fairly generic chipset
+
 # CPU
-opts="$opts -machine type=q35,accel=kvm"
 opts="$opts -enable-kvm"
-opts="$opts -cpu host,kvm=off"
+opts="$opts -cpu host,kvm=off" # Disable KVM in virtual CPU
 opts="$opts -smp 8,sockets=1,cores=4,threads=2"
+
+# PCI Devices
+pciid_vc_gpu="01:00.0" # PCI-ID of Video Card GPU
+pciid_vc_snd="01:00.1" # PCI-ID of Video Card Integrated Sound
+pciid_usb="00:14.0" # PCI-ID of isolated USB Controller
 
 # Memory
 opts="$opts -m 8G"
 
-# Clock
-opts="$opts -rtc clock=host,base=utc"
+# Disk
+opts="$opts -device virtio-scsi-pci,id=scsi"
+opts="$opts -drive file=/dev/sda,id=disk,format=raw,if=none"
+opts="$opts -device scsi-hd,drive=disk"
+
+# Video
+#   Pass-through via OVMF (Virtual UEFI Graphics Card BIOS)
+#   Grab from https://www.kraxel.org/repos/jenkins/edk2/)
+#   rpmextract.sh edk2.git-ovmf-x64-0-20150223.b877.ga8577b3.noarch.rpm
+#   cp -R ./usr/share/* /usr/share
+ovmf_dir="/usr/share/edk2.git/ovmf-ex64"
+cp $ovmf_dir/OVMF_VARS-pure-efi.fd ~/.tmp/my_vars.fd
+opts="$opts -device vfio-pci,host=$pciid_vc_gpu,multifunction=on,x-vga=on"
+opts="$opts -device vfio-pci,host=$pciid_vc_snd"
+opts="$opts -drive if=pflash,format=raw,readonly,file=$ovmf_dir/OVMF_CODE-pure-efi.fd"
+opts="$opts -drive if=pflash,format=raw,file=$HOME/.tmp/my_vars.fd"
+opts="$opts -nographic -vga none" # Headless on host
 
 # Sound
 opts="$opts -soundhw hda"
@@ -19,37 +41,23 @@ export QEMU_PA_SOURCE=input
 export QEMU_PA_SAMPLES=4096
 export QEMU_PA_SINK=alsa_output.pci-0000_00_1f.3.analog-stereo
 
-# VGA Passthrough
-cp /usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd ~/.tmp/my_vars.fd
-opts="$opts -device vfio-pci,host=01:00.0,multifunction=on,x-vga=on"
-opts="$opts -device vfio-pci,host=01:00.1"
-opts="$opts -drive if=pflash,format=raw,readonly,file=/usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd"
-opts="$opts -drive if=pflash,format=raw,file=$HOME/.tmp/my_vars.fd"
-
-# USB Passthrough
+# USB
 opts="$opts -usb"
-opts="$opts -device usb-host,hostbus=1,hostport=6"
-opts="$opts -device vfio-pci,host=00:14.0"
+opts="$opts -device vfio-pci,host=$pciid_usb"
 
-# Disk
-opts="$opts -device virtio-scsi-pci,id=scsi"
-opts="$opts -drive file=/dev/sda,id=disk,format=raw,if=none"
-opts="$opts -device scsi-hd,drive=disk"
+# Clock
+opts="$opts -rtc clock=host,base=utc"
 
-# Headless on host
-opts="$opts -nographic"
-opts="$opts -vga none"
-
-# Improved network performance if you have a tap device configured
+# Network
 #opts="$opts -net nic,model=virtio -net tap,ifname=tap0,script=no,downscript=no"
 
-# Install only
-#opts="$opts -drive file=/home/lrvick/Disks/virtio.iso,id=virtiocd,if=none"
+# OS Install
+#opts="$opts -drive file=/home/$USER/Disks/virtio.iso,id=virtiocd,if=none"
 #opts="$opts -device ide-cd,bus=ide.1,drive=virtiocd"
-#opts="$opts -cdrom /home/lrvick/Disks/Win10.iso"
+#opts="$opts -cdrom /home/$USER/Disks/Win10.iso"
 #opts="$opts -boot d"
 
-# Start Qemu
-# Warning: Currently running as root. Solutions for user-mode exist.
-# See: http://www.evonide.com/non-root-gpu-passthrough-setup/
-sudo qemu-system-x86_64 $opts
+# Boot VM
+# 	Warning: Currently running as root. Solutions for user-mode exist.
+# 	See: http://www.evonide.com/non-root-gpu-passthrough-setup/
+sudo qemu-system-x86_64 $opts $*
