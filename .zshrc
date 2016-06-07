@@ -6,6 +6,9 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git vi-mode docker pass systemd z)
 source $ZSH/oh-my-zsh.sh
 
+# Always use gpg2
+[ -f /usr/bin/gpg2 ] && alias gpg="/usr/bin/gpg2"
+
 #powerline
 pl_python_path=$(pip show powerline-status | grep Location | sed 's/Location: //g')
 pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
@@ -19,14 +22,13 @@ pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
 
 # GPG Agent Setup - If connected locally
 if [ -z "$SSH_TTY" ]; then
-
-    gpg --card-status > /dev/null 2>&1
     envfile="$HOME/.gnupg/gpg-agent.env"
     if [[ ! -e "$envfile" ]] || [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]]; then
         gpg-agent --daemon --enable-ssh-support > $envfile
     fi
     eval "$(cat "$envfile")"
     export SSH_AUTH_SOCK   # enable gpg-agent for ssh
+    gpg --card-status > /dev/null 2>&1
 fi
 
 # Ensure tmux always gets latest SSH_AUTH_SOCK
