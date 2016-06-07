@@ -8,3 +8,5 @@
     ui = auto
 [commit]
     gpgsign = true
+[gpg]
+	program = gpg2
