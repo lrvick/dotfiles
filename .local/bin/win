@@ -4,7 +4,7 @@
 install=false # true to boot with install media
 driver_iso="$HOME/Disks/virtio.iso"
 install_iso="$HOME/Disks/Win10.iso"
-sound_type="none" # 'none' for USB DAC. 'pulseaudio' or 'alsa' to share
+sound_type="pulseaudio" # 'none' for USB DAC. 'pulseaudio' or 'alsa' to share
 gpu_type="nvidia"
 guest_mem="8G"
 gpu_mem="6G"
@@ -43,11 +43,12 @@ qemu_opt "-machine type=q35,accel=kvm" # Q35 is a fairly generic chipset
 if [[ "$gpu_type" = "nvidia" ]]; then
 	# Nvidia cards do not support kvm on cpu or hyper-v enlightenments
 	qemu_opt "-cpu host,kvm=off"
+	#qemu_opt "-cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_vendor_id=Nvidia43FIX"
 else
 	# everyone else gets all the goodies
 	qemu_opt "-cpu host,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time"
 fi
-qemu_opt "-smp 8,sockets=1,cores=4,threads=2"
+qemu_opt "-smp 4,sockets=1,cores=2,threads=2"
 
 # Memory
 hugepage_size=$(grep Hugepagesize /proc/meminfo | awk '{ print $2}')
@@ -74,9 +75,9 @@ qemu_opt "-nographic -vga none" # Headless on host
 if [[ "$sound_type" = "pulseaudio" ]]; then
 	qemu_opt "-soundhw hda"
 	qemu_env "QEMU_AUDIO_DRV=pa"
-	qemu_env "QEMU_PA_SOURCE=input"
 	qemu_env "QEMU_PA_SAMPLES=4096"
-	qemu_env "QEMU_PA_SINK=alsa_output.pci-0000_00_1f.3.analog-stereo"
+	qemu_env "QEMU_PA_SERVER=localhost"
+	qemu_env "PULSE_SERVER=localhost"
 elif [[ "$sound_type" = "alsa" ]]; then
 	qemu_opt "-soundhw ac97"
 	qemu_env "QEMU_AUDIO_DRV=alsa"
