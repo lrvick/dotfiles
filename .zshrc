@@ -23,7 +23,12 @@ pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
 # GPG Agent Setup - If connected locally
 if [ -z "$SSH_TTY" ]; then
     envfile="$HOME/.gnupg/gpg-agent.env"
-    if [[ ! -e "$envfile" ]] || [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]]; then
+    if [[ ! -e "$envfile" ]] || ( \
+           [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
+           [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]]
+       );
+    then
+        killall gpg-agent
         gpg-agent --daemon --enable-ssh-support > $envfile
         gpg --card-status > /dev/null 2>&1
     fi
@@ -31,7 +36,9 @@ if [ -z "$SSH_TTY" ]; then
     export SSH_AUTH_SOCK   # enable gpg-agent for ssh
     gpg --card-status > /dev/null 2>&1
 elif [ -e $HOME/.gnupg/S.gpg-agent.ssh ]; then
-    mv $HOME/.gnupg/S.gpg-agent.ssh $HOME/.gnupg/S.gpg-agent
+    mv $HOME/.gnupg/S.gpg-agent{.ssh,}
+elif [ -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]; then
+    mv /var/run/user/$(id -u)/gnupg/S.gpg-agent{.ssh,}
 fi
 
 # Ensure tmux always gets latest SSH_AUTH_SOCK
