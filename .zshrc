@@ -29,6 +29,8 @@ if [ -z "$SSH_TTY" ]; then
     eval "$(cat "$envfile")"
     export SSH_AUTH_SOCK   # enable gpg-agent for ssh
     gpg --card-status > /dev/null 2>&1
+elif [ -e $HOME/.gnupg/S.gpg-agent.ssh ]; then
+    mv $HOME/.gnupg/S.gpg-agent.ssh $HOME/.gnupg/S.gpg-agent
 fi
 
 # Ensure tmux always gets latest SSH_AUTH_SOCK
