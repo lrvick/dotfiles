@@ -1,0 +1,18 @@
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+#include /usr/share/taskwarrior/light-16.theme
+#include /usr/share/taskwarrior/light-256.theme
+#include /usr/share/taskwarrior/dark-16.theme
+#include /usr/share/taskwarrior/dark-256.theme
+#include /usr/share/taskwarrior/dark-red-256.theme
+#include /usr/share/taskwarrior/dark-green-256.theme
+#include /usr/share/taskwarrior/dark-blue-256.theme
+#include /usr/share/taskwarrior/dark-violets-256.theme
+#include /usr/share/taskwarrior/dark-yellow-green.theme
+#include /usr/share/taskwarrior/dark-gray-256.theme
+taskd.certificate=\/home\/lrvick\/.task\/lrvick.cert.pem
+taskd.key=\/home\/lrvick\/.task\/lrvick.key.pem
+taskd.ca=\/home\/lrvick\/.task\/ca.cert.pem
+taskd.credentials=lrvick\/lrvick\/0e78c073-5705-11e6-9fe5-25fad1bc7314
+taskd.server=lrvick.net:53589
