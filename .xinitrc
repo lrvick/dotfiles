@@ -24,5 +24,9 @@ chromium &
 urxvtd & # Daemon
 urxvtc & # Client
 
+# Setup gpg defaults
+killall gpg-agent &
+source .zshrc &
+
 # Start Window Manager
 awesome
