@@ -69,5 +69,5 @@ if [ ! -z "$SSH_TTY" ]; then
         unlink "$HOME/.ssh/agent_sock" 2>/dev/null
         ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
     fi
-    export SSH_AUTH_SOCK = "$HOME/.ssh/agent_sock"
+    export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi
