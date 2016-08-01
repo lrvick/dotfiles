@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 DEFAULT_USER="lrvick"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git vi-mode docker pass systemd z)
+plugins=(git git-extras mosh vi-mode docker pass systemd z taskwarrior docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # Always use gpg2
@@ -20,7 +20,10 @@ pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
 #rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# If running locally
+#pyenv
+[[ -s "$HOME/.pyenv/bin/pyenv" ]] && eval "$(pyenv init -)"
+
+# GPG Agent Setup - If connected locally
 if [ -z "$SSH_TTY" ]; then
 
     # setup local gpg-agent with ssh support and save env to fixed location
