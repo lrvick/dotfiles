@@ -14,6 +14,7 @@ path=($^path(N)) # remove paths that don't exist
 
 export GOPATH=~/.local/lib/go/
 export QT_DEVICE_PIXEL_RATIO=auto
+export TASKDDATA=$HOME/.config/taskd
 
 # device specific env kept out of git
 [ -f ~/.device ] && source ~/.device 
