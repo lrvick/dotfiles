@@ -14,7 +14,7 @@ nitrogen --set-scaled ~/.wallpaper/tags.jpg
 
 # Load system-specific keyboard/screen config
 host_config="$HOME/.host_config/$HOST"
-[[ -f "$host_config/xbindkeys" ]] && xbindkeys -f $host_config/.xbindkeys
+[[ -f "$host_config/xbindkeys" ]] && xbindkeys -f $host_config/xbindkeys
 [[ -f "$host_config/screenlayout.sh" ]] && bash $host_config/screenlayout.sh
 
 # Launch Browser
@@ -23,6 +23,10 @@ chromium &
 # Terminal Setup
 urxvtd & # Daemon
 urxvtc & # Client
+
+# Setup gpg defaults
+killall gpg-agent &
+source .zshrc &
 
 # Start Window Manager
 awesome

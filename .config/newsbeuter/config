@@ -1,0 +1,19 @@
+auto-reload yes
+notify-always yes
+reload-time 20
+reload-threads 2
+
+ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "title =~ \"Advertisement\""
+ignore-mode "display"
+
+color background   default   default
+color listnormal   default   default
+color listfocus    black     yellow
+color info         default   black
+color article      default   default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default
