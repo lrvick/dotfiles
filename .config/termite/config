@@ -1,15 +1,13 @@
 [options]
-font = Hack 5
+font = Hack 12
 use_xft = true
 icon_name = terminal
-background = rgba(10,10,10,0.90)
 
 
 [colors]
 foreground = #839496
 foreground_bold = #eee8d5
-#foreground_dim = #888888
-background = #000000
+background = rgba(10,10,10,0.50)
 cursor = #93a1a1
 
 # if unset, will reverse foreground and background
