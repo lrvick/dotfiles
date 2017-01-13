@@ -26,5 +26,8 @@ termite & # Client
 # Setup terminal defaults in window manager scope
 source .zshrc &
 
+#start compositer
+compton &
+
 # Start Window Manager
 awesome
