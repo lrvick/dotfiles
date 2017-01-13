@@ -1,0 +1,6 @@
+#!/bin/bash
+key="6B61ECD76088748C70590D55E90A401336C8AAA9"
+gpg --batch --yes --delete-secret-and-public-key $key
+gpg --recv-key $key
+echo "$key":6: | gpg --import-ownertrust
+gpg --card-status
