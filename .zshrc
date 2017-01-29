@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 DEFAULT_USER="lrvick"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git vi-mode docker pass systemd z)
+plugins=(git git-extras mosh vi-mode docker pass systemd z taskwarrior docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # Always use gpg2
@@ -20,7 +20,23 @@ pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
 #rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# If running locally
+#pyenv
+[[ -s "$HOME/.pyenv/bin/pyenv" ]] && eval "$(pyenv init -)"
+
+#man theme
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
+# GPG Agent Setup - If connected locally
 if [ -z "$SSH_TTY" ]; then
 
     # setup local gpg-agent with ssh support and save env to fixed location
@@ -69,5 +85,5 @@ if [ ! -z "$SSH_TTY" ]; then
         unlink "$HOME/.ssh/agent_sock" 2>/dev/null
         ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
     fi
-    export SSH_AUTH_SOCK = "$HOME/.ssh/agent_sock"
+    export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 fi

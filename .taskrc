@@ -1,0 +1,43 @@
+data.location=~/.task
+
+include /home/lrvick/.task/dark-256.theme
+taskd.certificate=\/home\/lrvick\/.task\/lrvick.cert.pem
+taskd.key=\/home\/lrvick\/.task\/lrvick.key.pem
+taskd.ca=\/home\/lrvick\/.task\/ca.cert.pem
+taskd.credentials=lrvick\/lrvick\/0e78c073-5705-11e6-9fe5-25fad1bc7314
+taskd.server=lrvick.net:53589
+
+context.work=+work
+context.personal=+personal
+context.hashbang=+hashbang
+
+# Bugwarrior UDAs
+uda.jiraurl.type=string
+uda.jiraurl.label=Jira URL
+uda.githubcreatedon.type=date
+uda.githubcreatedon.label=Github Created
+uda.githubtitle.type=string
+uda.githubtitle.label=Github Title
+uda.githubnumber.type=numeric
+uda.githubnumber.label=Github Issue/PR #
+uda.githubbody.type=string
+uda.githubbody.label=Github Body
+uda.githubtype.type=string
+uda.githubtype.label=Github Type
+uda.jiraid.type=string
+uda.jiraid.label=Jira Issue ID
+uda.jiradescription.type=string
+uda.jiradescription.label=Jira Description
+uda.githuburl.type=string
+uda.githuburl.label=Github URL
+uda.jiraestimate.type=numeric
+uda.jiraestimate.label=Estimate
+uda.githubupdatedat.type=date
+uda.githubupdatedat.label=Github Updated
+uda.jirasummary.type=string
+uda.jirasummary.label=Jira Summary
+uda.githubrepo.type=string
+uda.githubrepo.label=Github Repo Slug
+uda.githubmilestone.type=numeric
+uda.githubmilestone.label=Github Milestone
+# END Bugwarrior UDAs

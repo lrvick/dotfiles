@@ -1,12 +1,17 @@
 [user]
-	email = lance@lrvick.net
-	name = Lance R. Vick
-	signingkey = 36C8AAA9
+    email = lance@lrvick.net
+    name = Lance R. Vick
+    signingKey = 36C8AAA9
 [push]
-	default = simple
+    default = simple
 [color]
     ui = auto
 [commit]
-    gpgsign = true
+    gpgSign = true
 [gpg]
-	program = gpg2
+    program = gpg2
+[log]
+    decorate = true
+    abbrevCommit = true
+[format]
+    pretty = %Cred%h%Creset - %C(bold blue)%G? %aN%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)

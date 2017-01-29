@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pass_path="$HOME/Sources/password-store/src/password-store.sh"
+
+if [ -f "$pass_path" ]; then
+    bash "$pass_path" "$@"
+    exit "$?"
+fi
+/usr/bin/pass "$@"

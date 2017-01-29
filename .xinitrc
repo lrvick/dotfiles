@@ -10,7 +10,7 @@ source setdpi
 xrdb -merge ~/.Xresources
 
 # Set Wallpaper
-nitrogen --set-scaled ~/.wallpaper/tags.jpg 
+nitrogen --set-scaled ~/.wallpaper/tags.jpg
 
 # Load system-specific keyboard/screen config
 host_config="$HOME/.host_config/$HOST"
@@ -18,11 +18,16 @@ host_config="$HOME/.host_config/$HOST"
 [[ -f "$host_config/screenlayout.sh" ]] && bash $host_config/screenlayout.sh
 
 # Launch Browser
-chromium &
+qutebrowser &
 
 # Terminal Setup
-urxvtd & # Daemon
-urxvtc & # Client
+termite & # Client
+
+# Setup terminal defaults in window manager scope
+source .zshrc &
+
+#start compositer
+compton &
 
 # Start Window Manager
 awesome

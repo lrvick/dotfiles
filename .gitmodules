@@ -1,15 +1,12 @@
-[submodule ".vim"]
-	path = .vim
-	url = https://github.com/lrvick/dotvim.git
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".fonts/powerline-fonts"]
-	path = .fonts/powerline-fonts
-	url = https://github.com/Lokaltog/powerline-fonts.git
+	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "Sources/powerline"]
 	path = Sources/powerline
 	url = https://github.com/Lokaltog/powerline
 [submodule ".config/awesome/lain"]
 	path = .config/awesome/lain
 	url = https://github.com/copycat-killer/lain.git
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:lrvick/dotvim.git

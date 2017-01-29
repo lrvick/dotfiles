@@ -1,0 +1,17 @@
+confirmation=1
+extensions=/usr/local/libexec/taskd
+ip.log=on
+log=/home/lrvick/.tmp/taskd.log
+pid.file=/home/lrvick/.tmp/taskd.pid
+queue.size=10
+request.limit=1048576
+root=/home/lrvick/.config/taskd
+server=lrvick.net:53589
+trust=strict
+verbose=1
+client.cert=/home/lrvick/.config/taskd/client.cert.pem
+client.key=/home/lrvick/.config/taskd/client.key.pem
+server.cert=/home/lrvick/.config/taskd/server.cert.pem
+server.key=/home/lrvick/.config/taskd/server.key.pem
+server.crl=/home/lrvick/.config/taskd/server.crl.pem
+ca.cert=/home/lrvick/.config/taskd/ca.cert.pem

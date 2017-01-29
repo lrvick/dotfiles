@@ -1,0 +1,44 @@
+[general]
+targets = github_work, github_personal, github_hashbang, jira_work
+taskrc = /home/lrvick/.taskrc
+shorten = False
+inline_links = False
+annotation_links = True
+annotation_comments = True
+legacy_matching = False
+#log.level = DEBUG
+#log.file = /var/log/bugwarrior.log
+
+[jira_work]
+service = jira
+jira.base_uri = https://pebbletechnology.atlassian.net
+jira.username = lance@getpebble.com
+jira.password = @oracle:eval:pass Personal/Pebble/jira
+jira.query = assignee = 'Lance Vick' and status != closed and status != resolved
+jira.version = 5
+add_tags = work
+
+[github_work]
+service = github
+default_priority = H
+add_tags = work
+github.username = pebble
+github.include_repos = git-deploy, git-deploy-hooks, git-deploy-environment, orbit, orbit.pebble.com, orbit-os, orbit-env, orbit-helpers, spacel-provision, spacel-agent, vz-spacel-agent
+github.login = lrvick
+github.password = @oracle:eval:pass Personal/github-read
+
+[github_personal]
+service = github
+default_priority = M
+add_tags = personal
+github.username = lrvick
+github.login = lrvick
+github.password = @oracle:eval:pass Personal/github-read
+
+[github_hashbang]
+service = github
+default_priority = M
+add_tags = hashbang
+github.username = hashbang
+github.login = lrvick
+github.password = @oracle:eval:pass Personal/github-read
