@@ -13,6 +13,7 @@ path=("$(ruby -e 'puts Gem.user_dir')/bin" $path)
 path=("$HOME/.rvm/bin" $path)
 path=("$HOME/.pyenv/shims:$HOME/.pyenv/bin" $path) # Add pyenv
 path=("$HOME/.local/lib/go/bin" $path)
+path=("$HOME/.luarocks/bin" $path)
 path=("$HOME/Sources/qemu/build/arm-softmmu" $path)
 path=("$HOME/Sources/gcc-arm-none-eabi/bin" $path)
 path=("$HOME/Sources/PebbleSDK/bin" $path)
