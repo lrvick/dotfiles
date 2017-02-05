@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local xrandr = require("scripts.xrandr")
 
 -- widgets
 local widgets = {
@@ -348,7 +349,11 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Screen Config
+    awful.key({ modkey, "Control" }, "x", function() xrandr.xrandr() end,
+              {description = "show display configuration"})
 )
 
 clientkeys = awful.util.table.join(
