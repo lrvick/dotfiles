@@ -1,17 +1,16 @@
 local wibox = require("wibox")
 local watch = require("awful.widget.watch")
-
-memory_widget_icon = wibox.widget {
+local icon = wibox.widget {
     {
         id = "icon",
         image = os.getenv("HOME").."/.config/awesome/themes/default/icons/memory.png",
         widget = wibox.widget.imagebox,
         resize = false
     },
-    layout = wibox.container.margin(memory_widget_icon, 5, 0, 5, 0),
+    layout = wibox.container.margin(icon, 5, 0, 5, 0),
 }
-memory_widget = wibox.widget.textbox()
-local function update_memorywidget()
+local widget = wibox.widget.textbox()
+local function update_widget()
     local mem_free, mem_total, mem_c, mem_b
     local mem_percent, swap_percent, line, f, count
     count = 0
@@ -34,10 +33,10 @@ local function update_memorywidget()
         line = f:read()
     end
     io.close(f)
-    memory_widget:set_text(" " .. math.floor(100 * (mem_total - mem_free - mem_b - mem_c ) / mem_total).. "%" .. " ")
+    widget:set_text(" " .. math.floor(100 * (mem_total - mem_free - mem_b - mem_c ) / mem_total).. "%" .. " ")
 end
-update_memorywidget()
-local memorywidget_timer = timer({ timeout = 30 })
-memorywidget_timer:connect_signal("timeout", update_memorywidget)
-memorywidget_timer:start()
-
+update_widget()
+local widget_timer = timer({ timeout = 30 })
+widget_timer:connect_signal("timeout", update_widget)
+widget_timer:start()
+return { widget = widget, icon = icon }

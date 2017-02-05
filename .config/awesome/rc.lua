@@ -12,13 +12,15 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- widgets
-require("widgets/battery")
-require("widgets/clock")
-require("widgets/ip")
-require("widgets/wifi")
-require("widgets/netupdown")
-require("widgets/memory")
-require("widgets/cpu")
+widgets = {
+    battery = require("widgets.battery"),
+    clock = require("widgets.clock"),
+    ip = require("widgets.ip"),
+    wifi = require("widgets.wifi"),
+    netupdown = require("widgets.netupdown"),
+    memory = require("widgets.memory"),
+    cpu = require("widgets.cpu")
+}
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -218,22 +220,22 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
-            ip_widget_icon,
-            ip_widget,
-            netup_widget_icon,
-            netup_widget,
-            netdown_widget_icon,
-            netdown_widget,
-            wifi_widget_icon,
-            wifi_widget,
-            cpu_widget_icon,
-            cpu_widget,
-            memory_widget_icon,
-            memory_widget,
-            battery_widget_icon,
-            battery_widget,
-            clock_widget_icon,
-            clock_widget,
+            widgets.ip.icon,
+            widgets.ip.widget,
+            widgets.netupdown.icon.up,
+            widgets.netupdown.widget.up,
+            widgets.netupdown.icon.down,
+            widgets.netupdown.widget.down,
+            widgets.wifi.icon,
+            widgets.wifi.widget,
+            widgets.cpu.icon,
+            widgets.cpu.widget,
+            widgets.memory.icon,
+            widgets.memory.widget,
+            widgets.battery.icon,
+            widgets.battery.widget,
+            widgets.clock.icon,
+            widgets.clock.widget,
             s.mylayoutbox,
         },
     }

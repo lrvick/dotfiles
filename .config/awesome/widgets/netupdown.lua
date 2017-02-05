@@ -1,27 +1,25 @@
 local wibox = require("wibox")
 local timer = require("gears.timer")
-
-netup_widget_icon = wibox.widget {
+local netup_icon = wibox.widget {
     {
         id = "icon",
         image = os.getenv("HOME").."/.config/awesome/themes/default/icons/netup.png",
         widget = wibox.widget.imagebox,
         resize = false
     },
-    layout = wibox.container.margin(netup_widget_icon, 5, 0, 5, 0),
+    layout = wibox.container.margin(netup_icon, 5, 0, 5, 0),
 }
-netup_widget = wibox.widget.textbox()
-netdown_widget_icon = wibox.widget {
+local netup_widget = wibox.widget.textbox()
+local netdown_icon = wibox.widget {
     {
         id = "icon",
         image = os.getenv("HOME").."/.config/awesome/themes/default/icons/netdown.png",
         widget = wibox.widget.imagebox,
         resize = false
     },
-    layout = wibox.container.margin(netdown_widget_icon, 5, 0, 5, 0),
+    layout = wibox.container.margin(netdown_icon, 5, 0, 5, 0),
 }
-netdown_widget = wibox.widget.textbox()
-
+local netdown_widget = wibox.widget.textbox()
 local total_bytes_down
 local total_bytes_up
 local update_widgets = function()
@@ -50,6 +48,10 @@ local update_widgets = function()
     netup_widget:set_text(" " .. net_up .. "MB/s")
 end
 update_widgets()
-local net_timer = timer{timeout=2}
-net_timer:connect_signal("timeout", update_widgets)
-net_timer:start()
+local widget_timer = timer{timeout=2}
+widget_timer:connect_signal("timeout", update_widgets)
+widget_timer:start()
+return {
+    widget = { up = netup_widget, down = netdown_widget },
+    icon = { up = netup_icon, down = netdown_icon }
+}
