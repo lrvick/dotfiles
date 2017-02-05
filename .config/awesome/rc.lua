@@ -12,7 +12,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- widgets
-widgets = {
+local widgets = {
     battery = require("widgets.battery"),
     clock = require("widgets.clock"),
     ip = require("widgets.ip"),
