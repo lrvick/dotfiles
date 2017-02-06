@@ -463,6 +463,9 @@ awful.rules.rules = {
      }
     },
 
+    { rule = { instance = "qutebrowser" },
+      properties = { tag = "9" } },
+
     -- Floating clients.
     { rule_any = {
         instance = {
