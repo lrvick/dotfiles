@@ -12,4 +12,4 @@ pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
 [ -f "$pl_zsh_module" ] && source "$pl_zsh_module"
 
 # GPG Setup
-gpg-init
+source gpg-init
