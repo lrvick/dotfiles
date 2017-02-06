@@ -2,4 +2,5 @@
 
 /usr/bin/qutebrowser \
     --backend webengine \
+    --restore default \
     $*
