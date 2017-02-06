@@ -2,7 +2,7 @@
 font = Hack 12
 use_xft = true
 icon_name = terminal
-
+browser = xdg-open
 
 [colors]
 foreground = #839496

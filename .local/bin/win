@@ -63,13 +63,15 @@ qemu_opt "-drive file=${disk},id=disk,format=raw,if=none"
 qemu_opt "-device scsi-hd,drive=disk"
 
 # Video
-ovmf_vars=$(mktemp)
-cp $ovmf_dir/OVMF_VARS-pure-efi.fd $ovmf_vars
-qemu_opt "-device vfio-pci,host=$pciid_vc_gpu,multifunction=on,x-vga=on"
-qemu_opt "-device vfio-pci,host=$pciid_vc_snd"
-qemu_opt "-drive if=pflash,format=raw,readonly,file=$ovmf_dir/OVMF_CODE-pure-efi.fd"
-qemu_opt "-drive if=pflash,format=raw,file=$ovmf_vars"
-qemu_opt "-nographic -vga none" # Headless on host
+if [[ "$install" != "true" ]]; then
+	ovmf_vars=$(mktemp)
+	cp $ovmf_dir/OVMF_VARS-pure-efi.fd $ovmf_vars
+	qemu_opt "-device vfio-pci,host=$pciid_vc_gpu,multifunction=on,x-vga=on"
+	qemu_opt "-device vfio-pci,host=$pciid_vc_snd"
+	qemu_opt "-drive if=pflash,format=raw,readonly,file=$ovmf_dir/OVMF_CODE-pure-efi.fd"
+	qemu_opt "-drive if=pflash,format=raw,file=$ovmf_vars"
+	qemu_opt "-nographic -vga none" # Headless on host
+fi
 
 # Sound
 if [[ "$sound_type" = "pulseaudio" ]]; then
