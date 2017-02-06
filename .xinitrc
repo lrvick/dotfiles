@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Lock screen right away
-slock
-
 # Setup HiDPI scaling vars as needed
 source setdpi
 
@@ -26,8 +23,11 @@ termite & # Client
 # Setup terminal defaults in window manager scope
 source .zshrc &
 
-#start compositer
+# Start compositer
 compton &
+
+# Setup GPG/SSH Agent
+gpg-init &
 
 # Start Window Manager
 awesome
