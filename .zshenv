@@ -22,6 +22,10 @@ path=("$HOME/Sources/gcs/bin" $path)
 path=("$HOME/.host_config/$HOST/bin" $path)
 path=($^path(N)) # remove paths that don't exist
 
+#GPG Based SSH Agent
+[[ -s "$HOME/.gnupg/gpg-agent.env" ]] && \
+    source "$HOME/.gnupg/gpg-agent.env"
+
 # Devtool Env
 [[ -s "$HOME/.travis/travis.sh" ]] && \
     source "$HOME/.travis/travis.sh"

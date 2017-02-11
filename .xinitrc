@@ -11,6 +11,12 @@ host_config="$HOME/.host_config/$(cat /etc/hostname)"
 [[ -f "$host_config/xbindkeys" ]] && xbindkeys -f "$host_config/xbindkeys"
 [[ -f "$host_config/screenlayout.sh" ]] && source "$host_config/screenlayout.sh"
 
+# Initialize GPG Agent
+gpg-init &
+
+# Start compositer
+compton &
+
 # Set Wallpaper
 nitrogen --set-scaled ~/.wallpaper/tags.jpg
 
@@ -19,15 +25,6 @@ qutebrowser &
 
 # Terminal Setup
 termite & # Client
-
-# Setup terminal defaults in window manager scope
-source .zshrc &
-
-# Start compositer
-compton &
-
-# Setup GPG/SSH Agent
-gpg-init &
 
 # Start Window Manager
 awesome

@@ -10,6 +10,3 @@ source $ZSH/oh-my-zsh.sh
 pl_python_path=$(pip show powerline-status | grep Location | sed 's/Location: //g')
 pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
 [ -f "$pl_zsh_module" ] && source "$pl_zsh_module"
-
-# GPG Setup
-source gpg-init
