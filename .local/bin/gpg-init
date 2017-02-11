@@ -12,7 +12,7 @@ if [ -z "$SSH_TTY" ]; then
            [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]]
        );
     then
-        killall gpg-agent scdaemon
+        killall pinentry gpg-agent scdaemon
         gpg-agent --daemon --enable-ssh-support > $envfile
     fi
 
