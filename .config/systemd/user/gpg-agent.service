@@ -1,0 +1,13 @@
+[Unit]
+Description=Maintain gpg-agent via gpg-init script
+ConditionFileIsExecutable=/usr/bin/gpg-agent
+
+[Service]
+Environment=DISPLAY=:0
+Type=forking
+Restart=always
+ExecStart=/home/lrvick/.local/bin/gpg-init
+ExecStop=/usr/bin/pkill -x -INT gpg-agent
+
+[Install]
+WantedBy=default.target
