@@ -1,19 +1,25 @@
 #!/bin/bash
 
+# Reset processes
+
 # GPG Agent Setup - If connected locally
 if [ -z "$SSH_TTY" ]; then
 
     # setup local gpg-agent with ssh support and save env to fixed location
     # so it can be easily picked up and re-used for multiple terminals
     envfile="$HOME/.gnupg/gpg-agent.env"
-    if [[ ! -e "$envfile" ]] || ( \
-           # deal with changed socket path in gnupg 2.1.13
-           [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
-           [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]]
+    if  ( # deal with changed socket path in gnupg 2.1.13
+          [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
+          [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]]
        );
     then
-        killall pinentry gpg-agent scdaemon
-        gpg-agent --daemon --enable-ssh-support > $envfile
+		killall pinentry
+		gpgconf --reload scdaemon
+		/usr/bin/pkill -x -INT gpg-agent
+        gpg-agent \
+        	--daemon \
+        	--enable-ssh-support \
+        	--log-file "/dev/stdout" > $envfile
     fi
 
     # Get latest gpg-agent socket location and expose for use by SSH
