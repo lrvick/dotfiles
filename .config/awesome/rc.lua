@@ -465,6 +465,8 @@ awful.rules.rules = {
 
     { rule = { instance = "qutebrowser" },
       properties = { tag = "9" } },
+    { rule = { instance = "urxvt" },
+      properties = { size_hints_honor = false } },
 
     -- Floating clients.
     { rule_any = {
