@@ -10,3 +10,6 @@
 [submodule ".vim"]
 	path = .vim
 	url = git@github.com:lrvick/dotvim.git
+[submodule ".urxvt/modules/font-size"]
+	path = .urxvt/modules/font-size
+	url = https://github.com/majutsushi/urxvt-font-size.git

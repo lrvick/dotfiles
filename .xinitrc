@@ -24,7 +24,8 @@ nitrogen --set-scaled ~/.wallpaper/tags.jpg
 qutebrowser &
 
 # Terminal Setup
-termite & # Client
+urxvtd &
+urxvtc & # Client
 
 # Start Window Manager
 awesome
