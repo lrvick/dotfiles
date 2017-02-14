@@ -5,9 +5,6 @@
 # GPG Agent Setup - If connected locally
 if [ -z "$SSH_TTY" ]; then
 
-    # setup local gpg-agent with ssh support and save env to fixed location
-    # so it can be easily picked up and re-used for multiple terminals
-    envfile="$HOME/.gnupg/gpg-agent.env"
     if  ( # deal with changed socket path in gnupg 2.1.13
           [[ ! -e "$HOME/.gnupg/S.gpg-agent" ]] && \
           [[ ! -e "/var/run/user/$(id -u)/gnupg/S.gpg-agent" ]]
@@ -19,11 +16,8 @@ if [ -z "$SSH_TTY" ]; then
         gpg-agent \
         	--daemon \
         	--enable-ssh-support \
-        	--log-file "/dev/stdout" > $envfile
+        	--log-file "/dev/stdout"
     fi
-
-    # Get latest gpg-agent socket location and expose for use by SSH
-    eval "$(cat "$envfile")" && export SSH_AUTH_SOCK
 
     # Wake up smartcard to avoid races
     gpg --card-status > /dev/null 2>&1

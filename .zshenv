@@ -5,6 +5,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH=~/.local/lib/go/
 export TASKDDATA=$HOME/.config/taskd
 export BROWSER="$HOME/.local/bin/qutebrowser"
+export SSH_AUTH_SOCK=/run/user/$(id -u)/gnupg/S.gpg-agent.ssh
 
 path=("$PYENV_ROOT/bin" $path)
 path=('/opt/android-sdk/platform-tools' $path)
@@ -21,10 +22,6 @@ path=("$HOME/Sources/PebbleSDK/bin" $path)
 path=("$HOME/Sources/gcs/bin" $path)
 path=("$HOME/.host_config/$HOST/bin" $path)
 path=($^path(N)) # remove paths that don't exist
-
-#GPG Based SSH Agent
-[[ -s "$HOME/.gnupg/gpg-agent.env" ]] && \
-    source "$HOME/.gnupg/gpg-agent.env"
 
 # Devtool Env
 [[ -s "$HOME/.travis/travis.sh" ]] && \
