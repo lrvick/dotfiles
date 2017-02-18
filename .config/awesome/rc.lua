@@ -182,6 +182,10 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- Hack to get back old-awesome restart behaviour due to awesome 4.0 MST regressions
+screen.connect_signal("removed", awesome.restart)
+screen.connect_signal("added", awesome.restart)
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
