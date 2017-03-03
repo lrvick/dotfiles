@@ -3,6 +3,7 @@ export TZ='America/Los_Angeles'
 export QT_DEVICE_PIXEL_RATIO=auto
 export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH=~/.local/lib/go/
+export NPM_PACKAGES="$HOME/.npm-packages"
 export TASKDDATA=$HOME/.config/taskd
 export BROWSER="$HOME/.local/bin/qutebrowser"
 export SSH_AUTH_SOCK=/run/user/$(id -u)/gnupg/S.gpg-agent.ssh
@@ -21,6 +22,7 @@ path=("$HOME/Sources/gcc-arm-none-eabi/bin" $path)
 path=("$HOME/Sources/PebbleSDK/bin" $path)
 path=("$HOME/Sources/gcs/bin" $path)
 path=("$HOME/.host_config/$HOST/bin" $path)
+path=("$NPM_PACKAGES/bin" $path)
 path=($^path(N)) # remove paths that don't exist
 
 # Devtool Env
