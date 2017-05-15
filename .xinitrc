@@ -25,5 +25,4 @@ urxvtd &
 urxvtc & # Client
 
 # Start Window Manager
-awesome >> $HOME/.cache/awesome/stdout 2>> $HOME/.cache/awesome/stderr
-xterm
+i3
