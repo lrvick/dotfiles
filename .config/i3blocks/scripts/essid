@@ -1,0 +1,9 @@
+#!/bin/bash
+
+INTERFACE="${BLOCK_INSTANCE:-wlp58s0}"
+
+iwconfig $INTERFACE \
+	| grep ESSID \
+	| awk '{print $4}' \
+	| sed 's/ESSID:"//g'\
+	| tail -n1

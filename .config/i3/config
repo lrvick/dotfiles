@@ -129,17 +129,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-  position top
-        status_command i3status
-  colors {
-    statusline #AAAAAA
-    background #333333
-    focused_workspace #282828 #282828 #FFFFFF
-    inactive_workspace #333333 #333333 #AAAAAA
-  }
+    position top
+ 	font pango:Hack 16, Awesome 16
+	status_command i3blocks -c ~/.config/i3blocks/config
+    colors {
+        separator #555555
+        background #222222
+        statusline #666666
+        focused_workspace #666666 #444444 #AAAAAA
+        active_workspace #AAAAAA #444444 #AAAAAA
+        inactive_workspace #333333 #333333 #666666
+        urgent_workspace #d33682 #d33682 #AAAAAA
+    }
 }
 
 for_window [class="^.*"] border pixel 1
