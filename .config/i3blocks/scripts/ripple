@@ -1,0 +1,8 @@
+#!/bin/bash
+
+price=$( \
+	curl "https://api.coinmarketcap.com/v1/ticker/?convert=USD&limit=10" \
+		| jq -r '.[] | select(.id=="ripple") | .price_usd'
+)
+
+printf "$%.2f" "$price"

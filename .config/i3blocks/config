@@ -14,6 +14,10 @@ interval=30
 label=Ł
 interval=30
 
+[ripple]
+label=Ʀ
+interval=30
+
 [volume]
 label=
 instance=Master
