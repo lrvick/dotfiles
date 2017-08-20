@@ -1,6 +1,7 @@
 ! General urxvt preferences
 urxvt*loginShell:true
 urxvt*transparent:true
+urxvt*borderless:true
 urxvt*shading:60
 urxvt*background:Black
 urxvt*foreground:White
@@ -20,6 +21,9 @@ URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
+
+! fix slow refresh rate
+URxvt*buffered: false
 
 urxvt*font: xft:Hack:pixelsize=21:antialias=true
 URxvt.keysym.C-Up:     font-size:increase
