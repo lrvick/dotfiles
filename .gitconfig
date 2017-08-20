@@ -8,6 +8,8 @@
     ui = auto
 [commit]
     gpgSign = true
+[merge]
+    gpgSign = true
 [gpg]
     program = gpg2
 [log]
