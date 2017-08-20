@@ -22,6 +22,10 @@ interval=30
 label=Ƶ
 interval=30
 
+[dash]
+label=Đ
+interval=30
+
 [monero]
 label=ɱ
 interval=30
