@@ -18,6 +18,14 @@ interval=30
 label=Ʀ
 interval=30
 
+[zcash]
+label=Ƶ
+interval=30
+
+[monero]
+label=ɱ
+interval=30
+
 [volume]
 label=
 instance=Master
