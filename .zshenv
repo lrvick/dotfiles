@@ -6,7 +6,9 @@ export GOPATH=~/.local/lib/go/
 export NPM_PACKAGES="$HOME/.npm-packages"
 export TASKDDATA=$HOME/.config/taskd
 export BROWSER="$HOME/.local/bin/qutebrowser"
-export SSH_AUTH_SOCK=/run/user/$(id -u)/gnupg/S.gpg-agent.ssh
+[[ -z "$SSH_TTY" ]] && \
+    export SSH_AUTH_SOCK=/run/user/$(id -u)/gnupg/S.gpg-agent.ssh
+
 
 path=("$PYENV_ROOT/bin" $path)
 path=('/opt/android-sdk/platform-tools' $path)
