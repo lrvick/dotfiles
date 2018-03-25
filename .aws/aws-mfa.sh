@@ -14,6 +14,8 @@ if [ -e "$cache_file" ]; then
 			aws_access_key_id ""
 		aws --profile "${profile}" configure set \
 			aws_secret_access_key ""
+		aws --profile "${profile}" configure set \
+			aws_session_token ""
 	fi
 fi
 
