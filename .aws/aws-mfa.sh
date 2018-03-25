@@ -10,6 +10,10 @@ if [ -e "$cache_file" ]; then
 		cat "$cache_file"
 	else
 		rm "$cache_file"
+		aws --profile "${profile}" configure set \
+			aws_access_key_id ""
+		aws --profile "${profile}" configure set \
+			aws_secret_access_key ""
 	fi
 fi
 
@@ -27,5 +31,12 @@ if [ ! -e "$cache_file" ]; then
 		--serial-number "$mfa_serial" \
 		--token-code "${mfa_token}" \
 	| jq -r '.[] + { Version: 1 }' >> "$cache_file"
+	aws --profile "${profile}-role" configure set \
+		aws_access_key_id "$(cat $cache_file | jq -r '.AccessKeyId' )"
+	aws --profile "${profile}-role" configure set \
+		aws_secret_access_key "$(cat $cache_file | jq -r '.SecretAccessKey' )"
+	aws --profile "${profile}-role" configure set \
+		aws_session_token "$(cat $cache_file | jq -r '.SessionToken' )"
+	cat "$cache_file"
 	cat "$cache_file"
 fi
