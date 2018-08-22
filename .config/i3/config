@@ -6,7 +6,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -131,7 +131,7 @@ bindsym $mod+r mode "resize"
 
 bar {
     position top
- 	font pango:Hack 16, Awesome 16
+ 	font pango:Hack 16, Awesome 7
 	status_command i3blocks -c ~/.config/i3blocks/config
     colors {
         separator #555555
