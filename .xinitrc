@@ -11,6 +11,9 @@ host_config="$HOME/.host_config/$(cat /etc/hostname)"
 [[ -f "$host_config/xbindkeys" ]] && xbindkeys -f "$host_config/xbindkeys"
 [[ -f "$host_config/screenlayout.sh" ]] && source "$host_config/screenlayout.sh"
 
+# Let gnupg know about our new xorg tty
+gpg-connect-agent updatestartuptty /bye
+
 # Start compositer
 compton &
 
@@ -21,8 +24,7 @@ nitrogen --set-scaled ~/.wallpaper/tags.jpg
 qutebrowser &
 
 # Terminal Setup
-urxvtd &
-urxvtc & # Client
+kitty &
 
 # Start Window Manager
 i3
