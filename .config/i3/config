@@ -19,6 +19,10 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+Tab exec "rofi -show run"
 
+#backlight
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
 # lock screen
 bindsym $mod+x exec "i3lock -c '000000'"
 
