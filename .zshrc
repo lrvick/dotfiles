@@ -7,8 +7,7 @@ plugins=(git git-extras mosh vi-mode docker pass systemd z taskwarrior docker do
 source $ZSH/oh-my-zsh.sh
 
 #powerline
-pl_python_path=$(python2 -m pip show powerline-status | grep Location | sed 's/Location: //g')
-pl_zsh_module=${pl_python_path}/powerline/bindings/zsh/powerline.zsh
+pl_zsh_module=/usr/share/powerline/bindings/zsh/powerline.zsh
 [ -f "$pl_zsh_module" ] && source "$pl_zsh_module"
 
 # OPAM configuration
