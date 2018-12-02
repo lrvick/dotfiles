@@ -4,17 +4,12 @@ export NPM_PACKAGES="$HOME/.npm-packages"
 export TASKDDATA=$HOME/.config/taskd
 
 path=("$PYENV_ROOT/bin" $path)
-path=('/opt/android-sdk/platform-tools' $path)
-path=('/opt/android-sdk/tools' $path)
 path=("$HOME/.local/bin" $path)
 path=("$(ruby -e 'puts Gem.user_dir')/bin" $path)
 path=("$HOME/.rvm/bin" $path)
 path=("$HOME/.pyenv/shims:$HOME/.pyenv/bin" $path) # Add pyenv
 path=("$HOME/.local/lib/go/bin" $path)
 path=("$HOME/.luarocks/bin" $path)
-path=("$HOME/Sources/qemu/build/arm-softmmu" $path)
-path=("$HOME/Sources/gcc-arm-none-eabi/bin" $path)
-path=("$HOME/Sources/PebbleSDK/bin" $path)
 path=("$HOME/Sources/gcs/bin" $path)
 path=("$HOME/.host_config/$HOST/bin" $path)
 path=("$NPM_PACKAGES/bin" $path)
