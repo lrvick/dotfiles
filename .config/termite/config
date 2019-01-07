@@ -1,5 +1,5 @@
 [options]
-font = Hack 12
+font = Hack 7
 use_xft = true
 icon_name = terminal
 browser = xdg-open
