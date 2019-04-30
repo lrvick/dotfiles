@@ -26,5 +26,8 @@ qutebrowser &
 # Terminal Setup
 kitty &
 
+# Automatically lock screen
+xautolock -time 1 -locker '/usr/bin/slock'
+
 # Start Window Manager
 i3
