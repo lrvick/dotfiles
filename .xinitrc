@@ -27,7 +27,10 @@ qutebrowser &
 kitty &
 
 # Automatically lock screen
-xautolock -time 1 -locker '/usr/bin/slock'
+xautolock -time 1 -locker '/usr/bin/slock' &
+
+# Enable USBGuard QT Applet to approve USB devices
+usbguard-applet-qt &
 
 # Start Window Manager
 i3
