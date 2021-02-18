@@ -1,3 +1,10 @@
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+export BROWSER="${HOME}/.local/bin/qutebrowser"
+export EDITOR="vim"
+export TZ="America/Los_Angeles"
+export QT_DEVICE_PIXEL_RATIO="auto"
+export GTK_THEME="Adwaita:dark"
 export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH=~/.local/lib/go/
 export NPM_PACKAGES="$HOME/.npm-packages"
