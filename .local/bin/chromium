@@ -1,5 +1,0 @@
-#!/bin/bash
-
-/usr/bin/chromium \
-	--disk-cache-dir=/tmp/cache \
-	--force-device-scale-factor=$DEVICE_SCALE_FACTOR $1 &
