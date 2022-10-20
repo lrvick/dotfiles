@@ -1,12 +1,21 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "Sources/powerline"]
-	path = Sources/powerline
-	url = https://github.com/Lokaltog/powerline
-[submodule ".vim"]
-	path = .vim
-	url = git@github.com:lrvick/dotvim.git
-[submodule ".urxvt/modules/font-size"]
-	path = .urxvt/modules/font-size
-	url = https://github.com/majutsushi/urxvt-font-size.git
+[submodule ".local/share/nvim/site/pack/default/start/vim-airline"]
+	path = .local/share/nvim/site/pack/default/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".local/share/nvim/site/pack/default/start/vim-colors-solarized"]
+	path = .local/share/nvim/site/pack/default/start/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule ".local/share/nvim/site/pack/default/start/rainbow_parentheses"]
+	path = .local/share/nvim/site/pack/default/start/rainbow_parentheses
+	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule ".local/share/nvim/site/pack/default/start/syntastic"]
+	path = .local/share/nvim/site/pack/default/start/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".local/share/nvim/site/pack/default/start/rust"]
+	path = .local/share/nvim/site/pack/default/start/rust
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".local/share/nvim/site/pack/default/start/vim-airline-themes"]
+	path = .local/share/nvim/site/pack/default/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
