@@ -1,14 +1,12 @@
-export SSH_AGENT_PID=""
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 export BROWSER="${HOME}/.local/bin/qutebrowser"
-export EDITOR="vim"
+export EDITOR="nvim"
 export TZ="America/Los_Angeles"
-export QT_DEVICE_PIXEL_RATIO="auto"
 export GTK_THEME="Adwaita:dark"
-export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH=~/.local/lib/go/
 export NPM_PACKAGES="$HOME/.npm-packages"
 export TASKDDATA=$HOME/.config/taskd
+
+# export QT_DEVICE_PIXEL_RATIO="auto"
 
 path=("$PYENV_ROOT/bin" $path)
 path=("$HOME/.local/bin" $path)
@@ -22,13 +20,16 @@ path=("$HOME/.host_config/$HOST/bin" $path)
 path=("$NPM_PACKAGES/bin" $path)
 path=($^path(N)) # remove paths that don't exist
 
-# Devtool Env
-[[ -s "$HOME/.travis/travis.sh" ]] && \
-    source "$HOME/.travis/travis.sh"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && \
-    source "$HOME/.rvm/scripts/rvm"
-[[ -s "$HOME/.pyenv/bin/pyenv" ]] && \
-    eval "$(pyenv init -)"
+# Use SSH via gpg-agent running in Qubes "vault" vm
+export SSH_VAULT_VM="vault"
+export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}"
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+  umask 177 && \
+  socat \
+    "UNIX-LISTEN:${SSH_AUTH_SOCK},fork" \
+    "EXEC:qrexec-client-vm ${SSH_VAULT_VM} qubes.SshAgent" &
+  umask 0022
+fi
 
 # Always use gpg2
 [[ -f /usr/bin/gpg2 ]] && alias gpg="/usr/bin/gpg2"
