@@ -5,6 +5,8 @@ export GTK_THEME="Adwaita:dark"
 export GOPATH=~/.local/lib/go/
 export NPM_PACKAGES="$HOME/.npm-packages"
 export TASKDDATA=$HOME/.config/taskd
+export SSH_VAULT_VM="vault"
+export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}"
 
 # export QT_DEVICE_PIXEL_RATIO="auto"
 
@@ -19,17 +21,6 @@ path=("$HOME/Sources/gcs/bin" $path)
 path=("$HOME/.host_config/$HOST/bin" $path)
 path=("$NPM_PACKAGES/bin" $path)
 path=($^path(N)) # remove paths that don't exist
-
-# Use SSH via gpg-agent running in Qubes "vault" vm
-export SSH_VAULT_VM="vault"
-export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}"
-if [ ! -f "$SSH_AUTH_SOCK" ]; then
-  umask 177 && \
-  socat \
-    "UNIX-LISTEN:${SSH_AUTH_SOCK},fork" \
-    "EXEC:qrexec-client-vm ${SSH_VAULT_VM} qubes.SshAgent" &
-  umask 0022
-fi
 
 # Always use gpg2
 [[ -f /usr/bin/gpg2 ]] && alias gpg="/usr/bin/gpg2"

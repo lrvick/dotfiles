@@ -1,0 +1,10 @@
+[Unit]
+Description=Run a SSH proxy socket to another QubesOS VM
+
+[Service]
+Environment=SSH_VAULT_VM=vault
+ExecStart=%h/.local/bin/qubes-ssh-socket
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
