@@ -10,8 +10,8 @@
     gpgSign = true
 [merge]
     gpgSign = true
-[gpg]
-    program = qubes-gpg-client-wrapper
 [log]
     decorate = true
     abbrevCommit = true
+[gpg]
+	program = qubes-gpg-client-wrapper

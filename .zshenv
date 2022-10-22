@@ -5,10 +5,13 @@ export GTK_THEME="Adwaita:dark"
 export GOPATH=~/.local/lib/go/
 export NPM_PACKAGES="$HOME/.npm-packages"
 export TASKDDATA=$HOME/.config/taskd
-export SSH_VAULT_VM="vault"
-export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}"
 
-# export QT_DEVICE_PIXEL_RATIO="auto"
+# Apply QubesOS specific configuration
+if command -v qubesdb-read &> /dev/null; then
+	export SSH_VAULT_VM="vault";
+	export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}";
+	git config --global gpg.program qubes-gpg-client-wrapper;
+fi
 
 path=("$PYENV_ROOT/bin" $path)
 path=("$HOME/.local/bin" $path)
