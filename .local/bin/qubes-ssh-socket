@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+export SSH_VAULT_VM="${SSH_VAULT_VM:-vault}"
+export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}"
+
+rm -f "$SSH_AUTH_SOCK"
+
+umask 177
+socat \
+  "UNIX-LISTEN:${SSH_AUTH_SOCK},fork" \
+  "EXEC:qrexec-client-vm ${SSH_VAULT_VM} qubes.SshAgent"
