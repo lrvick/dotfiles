@@ -11,6 +11,11 @@ if command -v qubesdb-read &> /dev/null; then
 	export SSH_VAULT_VM="vault";
 	export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}";
 	git config --global gpg.program qubes-gpg-client-wrapper;
+	ln -sf /bin/qubes-gpg-client-wrapper ~/.local/bin/gpg
+	ln -sf /bin/qubes-gpg-client-wrapper ~/.local/bin/gpg2
+else
+	# Always use gpg2
+	[[ -f /usr/bin/gpg2 ]] && alias gpg="/usr/bin/gpg2"
 fi
 
 path=("$PYENV_ROOT/bin" $path)
@@ -24,9 +29,6 @@ path=("$HOME/Sources/gcs/bin" $path)
 path=("$HOME/.host_config/$HOST/bin" $path)
 path=("$NPM_PACKAGES/bin" $path)
 path=($^path(N)) # remove paths that don't exist
-
-# Always use gpg2
-[[ -f /usr/bin/gpg2 ]] && alias gpg="/usr/bin/gpg2"
 
 #man theme
 man() {
