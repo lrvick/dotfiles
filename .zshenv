@@ -8,8 +8,8 @@ export TASKDDATA=$HOME/.config/taskd
 
 # Apply QubesOS specific configuration
 if command -v qubesdb-read &> /dev/null; then
-	export SSH_VAULT_VM="vault";
-	export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${SSH_VAULT_VM}";
+	export QUBES_GPG_DOMAIN="vault";
+	export SSH_AUTH_SOCK="/home/${USER}/.SSH_AGENT_${QUBES_GPG_DOMAIN}";
 	git config --global gpg.program qubes-gpg-client-wrapper;
 	ln -sf /bin/qubes-gpg-client-wrapper ~/.local/bin/gpg
 	ln -sf /bin/qubes-gpg-client-wrapper ~/.local/bin/gpg2
