@@ -18,6 +18,9 @@ else
 	[[ -f /usr/bin/gpg2 ]] && alias gpg="/usr/bin/gpg2"
 fi
 
+alias vi="nvim"
+alias vim="nvim"
+
 path=("$PYENV_ROOT/bin" $path)
 path=("$HOME/.local/bin" $path)
 path=("$(ruby -e 'puts Gem.user_dir')/bin" $path)
@@ -40,5 +43,5 @@ man() {
         LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
         LESS_TERMCAP_ue=$(printf "\e[0m") \
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
-            man "$@"
+        man "$@"
 }
