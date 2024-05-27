@@ -1,5 +1,6 @@
 "Basic goodness
 syntax on
+filetype plugin on
 filetype plugin indent on
 set number
 set cursorline
